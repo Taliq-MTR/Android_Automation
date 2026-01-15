@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="7" passed="7" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2026-01-14T15:06:03 IST" name="Suite" finished-at="2026-01-14T15:09:31 IST" duration-ms="207975">
+    <groups>
+    </groups>
+    <test started-at="2026-01-14T15:06:03 IST" name="Test" finished-at="2026-01-14T15:09:31 IST" duration-ms="207975">
+      <class name="com.aarogya.testcases.AddTestCase">
+        <test-method signature="addingTestCase()[pri:3, instance:com.aarogya.testcases.AddTestCase@3bd82cf5]" started-at="2026-01-14T15:07:06 IST" name="addingTestCase" finished-at="2026-01-14T15:08:47 IST" duration-ms="100305" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addingTestCase -->
+      </class> <!-- com.aarogya.testcases.AddTestCase -->
+      <class name="com.aarogya.testcases.WebLogOutTest">
+        <test-method signature="verifyWebLogout()[pri:6, instance:com.aarogya.testcases.WebLogOutTest@d35dea7]" started-at="2026-01-14T15:08:59 IST" name="verifyWebLogout" finished-at="2026-01-14T15:09:00 IST" duration-ms="1021" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyWebLogout -->
+      </class> <!-- com.aarogya.testcases.WebLogOutTest -->
+      <class name="com.aarogya.testcases.LogOutTestCase">
+        <test-method signature="logOutTest()[pri:11, instance:com.aarogya.testcases.LogOutTestCase@7770f470]" started-at="2026-01-14T15:09:00 IST" name="logOutTest" finished-at="2026-01-14T15:09:31 IST" duration-ms="30635" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- logOutTest -->
+      </class> <!-- com.aarogya.testcases.LogOutTestCase -->
+      <class name="com.aarogya.testcases.WebLoginSample">
+        <test-method signature="verifyWebLogin()[pri:4, instance:com.aarogya.testcases.WebLoginSample@544fa968]" started-at="2026-01-14T15:08:47 IST" name="verifyWebLogin" finished-at="2026-01-14T15:08:53 IST" duration-ms="5909" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyWebLogin -->
+      </class> <!-- com.aarogya.testcases.WebLoginSample -->
+      <class name="com.aarogya.testcases.LoginTestCase">
+        <test-method signature="loginTest()[pri:2, instance:com.aarogya.testcases.LoginTestCase@fa4c865]" started-at="2026-01-14T15:06:09 IST" name="loginTest" finished-at="2026-01-14T15:07:06 IST" duration-ms="57284" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- loginTest -->
+      </class> <!-- com.aarogya.testcases.LoginTestCase -->
+      <class name="com.aarogya.testcases.WebSiteCoOrdinatorTest">
+        <test-method signature="verifyLatestCaseFromMobileOnWeb()[pri:5, instance:com.aarogya.testcases.WebSiteCoOrdinatorTest@247bddad]" started-at="2026-01-14T15:08:53 IST" name="verifyLatestCaseFromMobileOnWeb" finished-at="2026-01-14T15:08:59 IST" duration-ms="6548" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyLatestCaseFromMobileOnWeb -->
+      </class> <!-- com.aarogya.testcases.WebSiteCoOrdinatorTest -->
+      <class name="com.aarogya.testcases.HomeTestCase">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.aarogya.testcases.HomeTestCase@510f3d34]" started-at="2026-01-14T15:05:57 IST" name="setup" finished-at="2026-01-14T15:06:03 IST" duration-ms="5898" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="selectCityTest()[pri:1, instance:com.aarogya.testcases.HomeTestCase@510f3d34]" started-at="2026-01-14T15:06:03 IST" name="selectCityTest" finished-at="2026-01-14T15:06:09 IST" duration-ms="5940" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- selectCityTest -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.aarogya.testcases.HomeTestCase@510f3d34]" started-at="2026-01-14T15:09:31 IST" name="tearDown" finished-at="2026-01-14T15:09:32 IST" duration-ms="1055" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.aarogya.testcases.HomeTestCase -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+</testng-results>
