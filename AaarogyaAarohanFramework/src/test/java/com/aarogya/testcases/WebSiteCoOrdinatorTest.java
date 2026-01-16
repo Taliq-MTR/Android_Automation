@@ -16,12 +16,15 @@ public class WebSiteCoOrdinatorTest {
 	public static String expectedFirstName;
 
 	@Test(priority = 4)
-	public void verifyLatestCaseFromMobileOnWeb() {
-
+	public void logInSiteCoordinator() {
 		// 🔐 LOGIN
 		WebLoginPage loginPage = new WebLoginPage(WebDriverManager.getWebDriver());
 		loginPage.login("sitecoordinator1", "password");
-		ExtentManager.test.log(Status.INFO, "Site Co-Ordinator Login SuccessFull");
+		ExtentManager.test.log(Status.PASS, "Site Co-Ordinator Login SuccessFull");
+	}
+
+	@Test(priority = 5)
+	public void verifyLatestCaseFromMobileOnWeb() {
 
 		SiteCoOrdinatorPage sitePage = new SiteCoOrdinatorPage(WebDriverManager.getWebDriver());
 
@@ -38,15 +41,14 @@ public class WebSiteCoOrdinatorTest {
 		ExtentManager.test.log(Status.PASS, "Latest mobile case verified successfully on Web");
 
 	}
-	
-	@Test(priority = 5)
+
+	@Test(priority = 6)
 	public void logoutSiteCoordinator() {
 
-	    WebLogOutPage logoutPage =
-	            new WebLogOutPage(WebDriverManager.getWebDriver());
+		WebLogOutPage logoutPage = new WebLogOutPage(WebDriverManager.getWebDriver());
 
-	    logoutPage.logout();
+		logoutPage.logout();
 
-	    ExtentManager.test.log(Status.INFO, "Site Co-Ordinator Logout Successful");
+		ExtentManager.test.log(Status.PASS, "Site Co-Ordinator Logout Successful");
 	}
 }

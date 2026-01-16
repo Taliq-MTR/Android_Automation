@@ -38,7 +38,7 @@ public class SpecialistPage {
     @FindBy(xpath = "//button[normalize-space()='View']")
     private WebElement viewButton;
 
-    // Drop-down & Fields
+    // DropDown & Fields
     @FindBy(id = "provisionalDiagnosis")
     private WebElement provisionalDiagnosisDropdown;
 
