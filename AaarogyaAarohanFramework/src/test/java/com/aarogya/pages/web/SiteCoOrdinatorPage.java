@@ -32,7 +32,7 @@ public class SiteCoOrdinatorPage {
 
 	@FindBy(xpath = "//div[contains(text(), 'Unique case ID')]/following-sibling::div[1]")
 	private WebElement firstCaseId;
-	
+
 	@FindBy(xpath = "//button//span[text()='Close']")
 	private WebElement popupClose;
 
@@ -46,13 +46,13 @@ public class SiteCoOrdinatorPage {
 
 	public void openReports() {
 		try {
-		wait.until(ExpectedConditions.visibilityOf(reportsTab)).click();
-		Thread.sleep(2000);
-		if(popupClose.isDisplayed()) {
-			popupClose.click();
-		} 
-		ExtentManager.test.log(Status.INFO, "Navigated to Reports page");
-		ExtentManager.test.log(Status.PASS, "Reports On site Co-Ordinator Opened");
+			wait.until(ExpectedConditions.visibilityOf(reportsTab)).click();
+			Thread.sleep(2000);
+			if (popupClose.isDisplayed()) {
+				popupClose.click();
+			}
+			ExtentManager.test.log(Status.INFO, "Navigated to Reports page");
+			ExtentManager.test.log(Status.PASS, "Reports On site Co-Ordinator Opened");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			ExtentManager.test.log(Status.FAIL, "Reports On site Co-Ordinator Not Opened:" + e);
@@ -61,12 +61,15 @@ public class SiteCoOrdinatorPage {
 
 	public void sortByRecentCasesFirst() {
 		try {
-		wait.until(ExpectedConditions.visibilityOf(sortDropdown));
-		sortDropdown.sendKeys("Recent cases first");
-		
+			wait.until(ExpectedConditions.visibilityOf(sortDropdown));
+			sortDropdown.sendKeys("Recent cases first");
+			if (popupClose.isDisplayed()) {
+				popupClose.click();
+			}
+
 			Thread.sleep(4000);
-		
-		ExtentManager.test.log(Status.INFO, "Sorted reports by Recent cases first");
+
+			ExtentManager.test.log(Status.INFO, "Sorted reports by Recent cases first");
 		} catch (Exception e) {
 			ExtentManager.test.log(Status.FAIL, "Sorted reports by Recent cases first Failed:" + e);
 		}

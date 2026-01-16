@@ -25,7 +25,7 @@
       <span class="top-banner-title-font">Test results</span>
       <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
       <br/>
-      <span class="top-banner-font-1">1 suite</span>
+      <span class="top-banner-font-1">1 suite, 1 failed test</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -39,7 +39,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" panel-name="suite-Suite" class="navigator-link">
-              <span class="suite-name border-passed">Suite</span>
+              <span class="suite-name border-failed">Suite</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -92,7 +92,21 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">7 methods,   7 passed</span>
+                    <span class="method-stats">2 methods, 1 failed,   1 passed</span>
+                  </li>
+                  <li>
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-Suite" class="hide-methods failed suite-Suite"> (hide)</a> <!-- hide-methods failed suite-Suite -->
+                      <a href="#" panel-name="suite-Suite" class="show-methods failed suite-Suite"> (show)</a> <!-- show-methods failed suite-Suite -->
+                    </span>
+                    <div class="method-list-content failed suite-Suite">
+                      <span>
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Suite" title="com.aarogya.testcases.WebSiteCoOrdinatorTest" class="method navigator-link" hash-for-method="verifyLatestCaseFromMobileOnWeb">verifyLatestCaseFromMobileOnWeb</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content failed suite-Suite -->
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -103,37 +117,7 @@
                     <div class="method-list-content passed suite-Suite">
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Suite" title="com.aarogya.testcases.AddTestCase" class="method navigator-link" hash-for-method="addingTestCase">addingTestCase</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Suite" title="com.aarogya.testcases.LogOutTestCase" class="method navigator-link" hash-for-method="logOutTest">logOutTest</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Suite" title="com.aarogya.testcases.LoginTestCase" class="method navigator-link" hash-for-method="loginTest">loginTest</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Suite" title="com.aarogya.testcases.HomeTestCase" class="method navigator-link" hash-for-method="selectCityTest">selectCityTest</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Suite" title="com.aarogya.testcases.WebSiteCoOrdinatorTest" class="method navigator-link" hash-for-method="verifyLatestCaseFromMobileOnWeb">verifyLatestCaseFromMobileOnWeb</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Suite" title="com.aarogya.testcases.WebLoginSample" class="method navigator-link" hash-for-method="verifyWebLogin">verifyWebLogin</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Suite" title="com.aarogya.testcases.WebLogOutTest" class="method navigator-link" hash-for-method="verifyWebLogout">verifyWebLogout</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Suite" title="com.aarogya.testcases.WebSiteCoOrdinatorTest" class="method navigator-link" hash-for-method="logoutSiteCoordinator">logoutSiteCoordinator</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-Suite -->
@@ -148,39 +132,9 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-Suite" class="panel Suite">
-          <div class="suite-Suite-class-passed">
+          <div class="suite-Suite-class-failed">
             <div class="main-panel-header rounded-window-top">
-              <img src="passed.png"/>
-              <span class="class-name">com.aarogya.testcases.HomeTestCase</span>
-            </div> <!-- main-panel-header rounded-window-top -->
-            <div class="main-panel-content rounded-window-bottom">
-              <div class="method">
-                <div class="method-content">
-                  <a name="selectCityTest">
-                  </a> <!-- selectCityTest -->
-                  <span class="method-name">selectCityTest</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-            </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Suite-class-passed -->
-          <div class="suite-Suite-class-passed">
-            <div class="main-panel-header rounded-window-top">
-              <img src="passed.png"/>
-              <span class="class-name">com.aarogya.testcases.WebLogOutTest</span>
-            </div> <!-- main-panel-header rounded-window-top -->
-            <div class="main-panel-content rounded-window-bottom">
-              <div class="method">
-                <div class="method-content">
-                  <a name="verifyWebLogout">
-                  </a> <!-- verifyWebLogout -->
-                  <span class="method-name">verifyWebLogout</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-            </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Suite-class-passed -->
-          <div class="suite-Suite-class-passed">
-            <div class="main-panel-header rounded-window-top">
-              <img src="passed.png"/>
+              <img src="failed.png"/>
               <span class="class-name">com.aarogya.testcases.WebSiteCoOrdinatorTest</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
@@ -189,66 +143,26 @@
                   <a name="verifyLatestCaseFromMobileOnWeb">
                   </a> <!-- verifyLatestCaseFromMobileOnWeb -->
                   <span class="method-name">verifyLatestCaseFromMobileOnWeb</span>
+                  <div class="stack-trace">java.lang.AssertionError: First name mismatch between Mobile &amp; Web expected [null] but found [test]
+	at com.aarogya.testcases.WebSiteCoOrdinatorTest.verifyLatestCaseFromMobileOnWeb(WebSiteCoOrdinatorTest.java:36)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+... Removed 30 stack frames
+</div> <!-- stack-trace -->
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Suite-class-passed -->
+          </div> <!-- suite-Suite-class-failed -->
           <div class="suite-Suite-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
-              <span class="class-name">com.aarogya.testcases.WebLoginSample</span>
+              <span class="class-name">com.aarogya.testcases.WebSiteCoOrdinatorTest</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="verifyWebLogin">
-                  </a> <!-- verifyWebLogin -->
-                  <span class="method-name">verifyWebLogin</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-            </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Suite-class-passed -->
-          <div class="suite-Suite-class-passed">
-            <div class="main-panel-header rounded-window-top">
-              <img src="passed.png"/>
-              <span class="class-name">com.aarogya.testcases.LogOutTestCase</span>
-            </div> <!-- main-panel-header rounded-window-top -->
-            <div class="main-panel-content rounded-window-bottom">
-              <div class="method">
-                <div class="method-content">
-                  <a name="logOutTest">
-                  </a> <!-- logOutTest -->
-                  <span class="method-name">logOutTest</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-            </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Suite-class-passed -->
-          <div class="suite-Suite-class-passed">
-            <div class="main-panel-header rounded-window-top">
-              <img src="passed.png"/>
-              <span class="class-name">com.aarogya.testcases.AddTestCase</span>
-            </div> <!-- main-panel-header rounded-window-top -->
-            <div class="main-panel-content rounded-window-bottom">
-              <div class="method">
-                <div class="method-content">
-                  <a name="addingTestCase">
-                  </a> <!-- addingTestCase -->
-                  <span class="method-name">addingTestCase</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-            </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Suite-class-passed -->
-          <div class="suite-Suite-class-passed">
-            <div class="main-panel-header rounded-window-top">
-              <img src="passed.png"/>
-              <span class="class-name">com.aarogya.testcases.LoginTestCase</span>
-            </div> <!-- main-panel-header rounded-window-top -->
-            <div class="main-panel-content rounded-window-bottom">
-              <div class="method">
-                <div class="method-content">
-                  <a name="loginTest">
-                  </a> <!-- loginTest -->
-                  <span class="method-name">loginTest</span>
+                  <a name="logoutSiteCoordinator">
+                  </a> <!-- logoutSiteCoordinator -->
+                  <span class="method-name">logoutSiteCoordinator</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -268,13 +182,7 @@
   &lt;/listeners&gt;
   &lt;test thread-count=&quot;5&quot; name=&quot;Test&quot;&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;com.aarogya.testcases.HomeTestCase&quot;/&gt;
-      &lt;class name=&quot;com.aarogya.testcases.LoginTestCase&quot;/&gt;
-      &lt;class name=&quot;com.aarogya.testcases.AddTestCase&quot;/&gt;
-      &lt;class name=&quot;com.aarogya.testcases.WebLoginSample&quot;/&gt;
       &lt;class name=&quot;com.aarogya.testcases.WebSiteCoOrdinatorTest&quot;/&gt;
-      &lt;class name=&quot;com.aarogya.testcases.WebLogOutTest&quot;/&gt;
-      &lt;class name=&quot;com.aarogya.testcases.LogOutTestCase&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Test --&gt;
 &lt;/suite&gt; &lt;!-- Suite --&gt;
@@ -288,7 +196,7 @@
           <div class="main-panel-content rounded-window-bottom">
             <ul>
               <li>
-                <span class="test-name">Test (7 classes)</span>
+                <span class="test-name">Test (1 class)</span>
               </li>
             </ul>
           </div> <!-- main-panel-content rounded-window-bottom -->
@@ -314,40 +222,20 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(7);
+data.addRows(2);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'addingTestCase')
-data.setCell(0, 2, 'com.aarogya.testcases.AddTestCase')
-data.setCell(0, 3, 100305);
+data.setCell(0, 1, 'verifyLatestCaseFromMobileOnWeb')
+data.setCell(0, 2, 'com.aarogya.testcases.WebSiteCoOrdinatorTest')
+data.setCell(0, 3, 20470);
 data.setCell(1, 0, 1)
-data.setCell(1, 1, 'loginTest')
-data.setCell(1, 2, 'com.aarogya.testcases.LoginTestCase')
-data.setCell(1, 3, 57284);
-data.setCell(2, 0, 2)
-data.setCell(2, 1, 'logOutTest')
-data.setCell(2, 2, 'com.aarogya.testcases.LogOutTestCase')
-data.setCell(2, 3, 30635);
-data.setCell(3, 0, 3)
-data.setCell(3, 1, 'verifyLatestCaseFromMobileOnWeb')
-data.setCell(3, 2, 'com.aarogya.testcases.WebSiteCoOrdinatorTest')
-data.setCell(3, 3, 6548);
-data.setCell(4, 0, 4)
-data.setCell(4, 1, 'selectCityTest')
-data.setCell(4, 2, 'com.aarogya.testcases.HomeTestCase')
-data.setCell(4, 3, 5940);
-data.setCell(5, 0, 5)
-data.setCell(5, 1, 'verifyWebLogin')
-data.setCell(5, 2, 'com.aarogya.testcases.WebLoginSample')
-data.setCell(5, 3, 5909);
-data.setCell(6, 0, 6)
-data.setCell(6, 1, 'verifyWebLogout')
-data.setCell(6, 2, 'com.aarogya.testcases.WebLogOutTest')
-data.setCell(6, 3, 1021);
+data.setCell(1, 1, 'logoutSiteCoordinator')
+data.setCell(1, 2, 'com.aarogya.testcases.WebSiteCoOrdinatorTest')
+data.setCell(1, 3, 5978);
 window.suiteTableData['Suite']= { tableData: data, tableDiv: 'times-div-Suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 3 minutes</span>
+              <span class="suite-total-time">Total running time: 26 seconds</span>
               <div id="times-div-Suite">
               </div> <!-- times-div-Suite -->
             </div> <!-- times-div -->
@@ -362,54 +250,9 @@ return data;
         </div> <!-- panel -->
         <div panel-name="ignored-methods-Suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">10 ignored methods</span>
+            <span class="header-content">0 ignored methods</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
-            <div class="ignored-class-div">
-              <span class="ignored-class-name">com.aarogya.testcases.WebLogOutTest</span>
-              <div class="ignored-methods-div">
-                <span class="ignored-method-name">tearDown</span>
-                <br/>
-                <span class="ignored-method-name">setup</span>
-                <br/>
-              </div> <!-- ignored-methods-div -->
-            </div> <!-- ignored-class-div -->
-            <div class="ignored-class-div">
-              <span class="ignored-class-name">com.aarogya.testcases.WebLoginSample</span>
-              <div class="ignored-methods-div">
-                <span class="ignored-method-name">setup</span>
-                <br/>
-                <span class="ignored-method-name">tearDown</span>
-                <br/>
-              </div> <!-- ignored-methods-div -->
-            </div> <!-- ignored-class-div -->
-            <div class="ignored-class-div">
-              <span class="ignored-class-name">com.aarogya.testcases.AddTestCase</span>
-              <div class="ignored-methods-div">
-                <span class="ignored-method-name">setup</span>
-                <br/>
-                <span class="ignored-method-name">tearDown</span>
-                <br/>
-              </div> <!-- ignored-methods-div -->
-            </div> <!-- ignored-class-div -->
-            <div class="ignored-class-div">
-              <span class="ignored-class-name">com.aarogya.testcases.LogOutTestCase</span>
-              <div class="ignored-methods-div">
-                <span class="ignored-method-name">tearDown</span>
-                <br/>
-                <span class="ignored-method-name">setup</span>
-                <br/>
-              </div> <!-- ignored-methods-div -->
-            </div> <!-- ignored-class-div -->
-            <div class="ignored-class-div">
-              <span class="ignored-class-name">com.aarogya.testcases.LoginTestCase</span>
-              <div class="ignored-methods-div">
-                <span class="ignored-method-name">tearDown</span>
-                <br/>
-                <span class="ignored-method-name">setup</span>
-                <br/>
-              </div> <!-- ignored-methods-div -->
-            </div> <!-- ignored-class-div -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
         <div panel-name="chronological-Suite" class="panel">
@@ -418,64 +261,17 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">com.aarogya.testcases.HomeTestCase</div> <!-- chronological-class-name -->
-              <div class="configuration-suite before">
-                <span class="method-name">setup</span>
-                <span class="method-start">0 ms</span>
-              </div> <!-- configuration-suite before -->
-              <div class="test-method">
-                <span class="method-name">selectCityTest</span>
-                <span class="method-start">6211 ms</span>
-              </div> <!-- test-method -->
-            </div> <!-- chronological-class -->
-            <div class="chronological-class">
-              <div class="chronological-class-name">com.aarogya.testcases.LoginTestCase</div> <!-- chronological-class-name -->
-              <div class="test-method">
-                <span class="method-name">loginTest</span>
-                <span class="method-start">12158 ms</span>
-              </div> <!-- test-method -->
-            </div> <!-- chronological-class -->
-            <div class="chronological-class">
-              <div class="chronological-class-name">com.aarogya.testcases.AddTestCase</div> <!-- chronological-class-name -->
-              <div class="test-method">
-                <span class="method-name">addingTestCase</span>
-                <span class="method-start">69445 ms</span>
-              </div> <!-- test-method -->
-            </div> <!-- chronological-class -->
-            <div class="chronological-class">
-              <div class="chronological-class-name">com.aarogya.testcases.WebLoginSample</div> <!-- chronological-class-name -->
-              <div class="test-method">
-                <span class="method-name">verifyWebLogin</span>
-                <span class="method-start">169753 ms</span>
-              </div> <!-- test-method -->
-            </div> <!-- chronological-class -->
-            <div class="chronological-class">
               <div class="chronological-class-name">com.aarogya.testcases.WebSiteCoOrdinatorTest</div> <!-- chronological-class-name -->
               <div class="test-method">
+                <img src="failed.png">
+                </img>
                 <span class="method-name">verifyLatestCaseFromMobileOnWeb</span>
-                <span class="method-start">175665 ms</span>
+                <span class="method-start">0 ms</span>
               </div> <!-- test-method -->
-            </div> <!-- chronological-class -->
-            <div class="chronological-class">
-              <div class="chronological-class-name">com.aarogya.testcases.WebLogOutTest</div> <!-- chronological-class-name -->
               <div class="test-method">
-                <span class="method-name">verifyWebLogout</span>
-                <span class="method-start">182215 ms</span>
+                <span class="method-name">logoutSiteCoordinator</span>
+                <span class="method-start">20602 ms</span>
               </div> <!-- test-method -->
-            </div> <!-- chronological-class -->
-            <div class="chronological-class">
-              <div class="chronological-class-name">com.aarogya.testcases.LogOutTestCase</div> <!-- chronological-class-name -->
-              <div class="test-method">
-                <span class="method-name">logOutTest</span>
-                <span class="method-start">183238 ms</span>
-              </div> <!-- test-method -->
-            </div> <!-- chronological-class -->
-            <div class="chronological-class">
-              <div class="chronological-class-name">com.aarogya.testcases.HomeTestCase</div> <!-- chronological-class-name -->
-              <div class="configuration-suite after">
-                <span class="method-name">tearDown</span>
-                <span class="method-start">214219 ms</span>
-              </div> <!-- configuration-suite after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
       </div> <!-- main-panel-root -->

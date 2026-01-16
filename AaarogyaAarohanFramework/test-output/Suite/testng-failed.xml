@@ -11,20 +11,6 @@
           <include name="verifyLatestCaseFromMobileOnWeb"/>
         </methods>
       </class> <!-- com.aarogya.testcases.WebSiteCoOrdinatorTest -->
-      <class name="com.aarogya.testcases.LogOutTestCase">
-        <methods>
-          <include name="tearDown"/>
-          <include name="setup"/>
-          <include name="logOutTest"/>
-        </methods>
-      </class> <!-- com.aarogya.testcases.LogOutTestCase -->
-      <class name="com.aarogya.testcases.AddTestCase">
-        <methods>
-          <include name="tearDown"/>
-          <include name="setup"/>
-          <include name="addingTestCase"/>
-        </methods>
-      </class> <!-- com.aarogya.testcases.AddTestCase -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

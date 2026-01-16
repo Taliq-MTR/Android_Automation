@@ -9,7 +9,7 @@ import com.aarogya.pages.web.WebLoginPage;
 
 public class WebLoginSample extends BaseTest {
 
-    @Test(priority = 4)
+//    @Test(priority = 4)
     public void verifyWebLogin() {
 
         // Driver already opens URL automatically

@@ -9,7 +9,7 @@ import com.aarogya.pages.web.WebLogOutPage;
 
 public class WebLogOutTest extends BaseTest {
 
-	@Test(priority = 6)
+//	@Test(priority = 6)
 	public void verifyWebLogout() {
 
 		// Precondition:

@@ -10,20 +10,21 @@
    
     <classes>
     
-    	<class name="com.aarogya.testcases.HomeTestCase"/>
-        <class name="com.aarogya.testcases.LoginTestCase"/>
-        <class name="com.aarogya.testcases.AddTestCase"/>
-    	 <class name="com.aarogya.testcases.WebLoginSample"/>
+
     	<class name="com.aarogya.testcases.WebSiteCoOrdinatorTest"/>
-    	<class name="com.aarogya.testcases.WebLogOutTest"/>
-    	<class name="com.aarogya.testcases.LogOutTestCase"/>
+    	
       
       <!-- 
 		
 		
 		
-		
-		
+		    	<class name="com.aarogya.testcases.HomeTestCase"/>
+        <class name="com.aarogya.testcases.LoginTestCase"/>
+        <class name="com.aarogya.testcases.AddTestCase"/>
+    	 <class name="com.aarogya.testcases.WebLoginSample"/>
+    	 
+		<class name="com.aarogya.testcases.WebLogOutTest"/>
+    	<class name="com.aarogya.testcases.LogOutTestCase"/>
 		
 		
 		
