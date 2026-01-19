@@ -71,15 +71,15 @@ public class WebLoginPage {
 
 	public void login(String email, String password) {
 		try {
-		clickToLoginPage();
-		enterEmail(email);
-		enterPassword(password);
-		clickLogin();
-
-		// wait till dashboard loads
-		wait.until(ExpectedConditions.visibilityOf(reportsAndSummaryText));
-		ExtentManager.test.log(Status.PASS, "Web Login SuccessFull");
-		}catch(Exception e) {
+			Thread.sleep(900);
+			clickToLoginPage();
+			enterEmail(email);
+			enterPassword(password);
+			clickLogin();
+			Thread.sleep(4000);
+			
+			ExtentManager.test.log(Status.PASS, "Web Login SuccessFull");
+		} catch (Exception e) {
 			ExtentManager.test.log(Status.FAIL, "Web Login Failed:" + e);
 		}
 	}

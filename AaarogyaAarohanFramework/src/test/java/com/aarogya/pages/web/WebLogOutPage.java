@@ -44,7 +44,7 @@ public class WebLogOutPage {
 
 	public void logout() {
 		try {
-		Thread.sleep(1000);
+		Thread.sleep(1500);
 		wait.until(ExpectedConditions.visibilityOf(userProfileLogo));
 		actions.moveToElement(userProfileLogo).perform();
 

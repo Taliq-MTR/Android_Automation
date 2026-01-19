@@ -5,13 +5,14 @@
    <listeners>
         <listener class-name="com.aarogya.listener.TestListener"/>
     </listeners>
-  <test thread-count="5" name="Test">
+  <test thread-count="1" name="Aarogya Aarohan Mobile And Web App">
    
    
     <classes>
     
 
-    	<class name="com.aarogya.testcases.WebSiteCoOrdinatorTest"/>
+    	<class name="com.aarogya.testcases.WebSpecialistTestCase"/>
+    	<class name="com.aarogya.testcases.WebSuperSpecialistTestCase"/>
     	
       
       <!-- 

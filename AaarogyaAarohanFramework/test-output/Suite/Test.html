@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>1/1/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>5/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Fri Jan 16 18:04:12 IST 2026</td>
+<td>Started on:</td><td>Mon Jan 19 17:45:49 IST 2026</td>
 </tr>
-<tr><td>Total time:</td><td>26 seconds (26758 ms)</td>
+<tr><td>Total time:</td><td>175 seconds (175954 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -76,18 +76,20 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.aarogya.testcases.WebSiteCoOrdinatorTest.verifyLatestCaseFromMobileOnWeb()'><b>verifyLatestCaseFromMobileOnWeb</b><br>Test class: com.aarogya.testcases.WebSiteCoOrdinatorTest</td>
-<td><div><pre>java.lang.AssertionError: First name mismatch between Mobile &amp; Web expected [null] but found [test]
-	at com.aarogya.testcases.WebSiteCoOrdinatorTest.verifyLatestCaseFromMobileOnWeb(WebSiteCoOrdinatorTest.java:36)
+<td title='com.aarogya.testcases.WebSuperSpecialistTestCase.verifySuperSpecialistSubmitCase()'><b>verifySuperSpecialistSubmitCase</b><br>Test class: com.aarogya.testcases.WebSuperSpecialistTestCase</td>
+<td><div><pre>java.lang.AssertionError: Super specialist submission confirmation message mismatch expected [Case submitted successfully] but found [null]
+	at com.aarogya.base.AssertHelper.assertEquals(AssertHelper.java:32)
+	at com.aarogya.testcases.WebSuperSpecialistTestCase.verifySuperSpecialistSubmitCase(WebSuperSpecialistTestCase.java:61)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-... Removed 30 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace301205240", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace301205240'><pre>java.lang.AssertionError: First name mismatch between Mobile &amp; Web expected [null] but found [test]
+... Removed 30 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1106933404", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1106933404'><pre>java.lang.AssertionError: Super specialist submission confirmation message mismatch expected [Case submitted successfully] but found [null]
 	at org.testng.Assert.fail(Assert.java:111)
 	at org.testng.Assert.failNotEquals(Assert.java:1590)
 	at org.testng.Assert.assertEqualsImpl(Assert.java:150)
 	at org.testng.Assert.assertEquals(Assert.java:132)
 	at org.testng.Assert.assertEquals(Assert.java:656)
-	at com.aarogya.testcases.WebSiteCoOrdinatorTest.verifyLatestCaseFromMobileOnWeb(WebSiteCoOrdinatorTest.java:36)
+	at com.aarogya.base.AssertHelper.assertEquals(AssertHelper.java:32)
+	at com.aarogya.testcases.WebSuperSpecialistTestCase.verifySuperSpecialistSubmitCase(WebSuperSpecialistTestCase.java:61)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
@@ -115,8 +117,8 @@ function toggleAllBoxes() {
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
 </pre></div></td>
-<td>20</td>
-<td>com.aarogya.testcases.WebSiteCoOrdinatorTest@38425407</td></tr>
+<td>63</td>
+<td>com.aarogya.testcases.WebSuperSpecialistTestCase@1165b38</td></tr>
 </table><p>
 <table width='100%' border='1' class='invocation-passed'>
 <tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
@@ -127,10 +129,30 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.aarogya.testcases.WebSiteCoOrdinatorTest.logoutSiteCoordinator()'><b>logoutSiteCoordinator</b><br>Test class: com.aarogya.testcases.WebSiteCoOrdinatorTest</td>
+<td title='com.aarogya.testcases.WebSpecialistTestCase.logInSiteCoordinator()'><b>logInSiteCoordinator</b><br>Test class: com.aarogya.testcases.WebSpecialistTestCase</td>
 <td></td>
-<td>5</td>
-<td>com.aarogya.testcases.WebSiteCoOrdinatorTest@38425407</td></tr>
+<td>38</td>
+<td>com.aarogya.testcases.WebSpecialistTestCase@6a6cb05c</td></tr>
+<tr>
+<td title='com.aarogya.testcases.WebSpecialistTestCase.verifySpecialistSubmitCaseForSecondOpinon()'><b>verifySpecialistSubmitCaseForSecondOpinon</b><br>Test class: com.aarogya.testcases.WebSpecialistTestCase</td>
+<td></td>
+<td>35</td>
+<td>com.aarogya.testcases.WebSpecialistTestCase@6a6cb05c</td></tr>
+<tr>
+<td title='com.aarogya.testcases.WebSuperSpecialistTestCase.logInSiteCoordinator()'><b>logInSiteCoordinator</b><br>Test class: com.aarogya.testcases.WebSuperSpecialistTestCase</td>
+<td></td>
+<td>33</td>
+<td>com.aarogya.testcases.WebSuperSpecialistTestCase@1165b38</td></tr>
+<tr>
+<td title='com.aarogya.testcases.WebSuperSpecialistTestCase.logoutSiteCoordinator()'><b>logoutSiteCoordinator</b><br>Test class: com.aarogya.testcases.WebSuperSpecialistTestCase</td>
+<td></td>
+<td>2</td>
+<td>com.aarogya.testcases.WebSuperSpecialistTestCase@1165b38</td></tr>
+<tr>
+<td title='com.aarogya.testcases.WebSpecialistTestCase.logoutSiteCoordinator()'><b>logoutSiteCoordinator</b><br>Test class: com.aarogya.testcases.WebSpecialistTestCase</td>
+<td></td>
+<td>2</td>
+<td>com.aarogya.testcases.WebSpecialistTestCase@6a6cb05c</td></tr>
 </table><p>
 </body>
 </html>

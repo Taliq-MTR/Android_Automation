@@ -3,6 +3,8 @@ package com.aarogya.testcases;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import com.aarogya.base.AssertHelper;
+import com.aarogya.base.BaseTest;
 import com.aarogya.base.WebDriverManager;
 import com.aarogya.pages.web.SiteCoOrdinatorPage;
 import com.aarogya.pages.web.WebLogOutPage;
@@ -10,7 +12,7 @@ import com.aarogya.pages.web.WebLoginPage;
 import com.aarogya.reports.ExtentManager;
 import com.aventstack.extentreports.Status;
 
-public class WebSiteCoOrdinatorTest {
+public class WebSiteCoOrdinatorTest extends BaseTest{
 
 	// 🔗 Value set from Android test
 	public static String expectedFirstName;
@@ -36,7 +38,7 @@ public class WebSiteCoOrdinatorTest {
 		ExtentManager.test.log(Status.INFO, "Expected First Name (Mobile): " + expectedFirstName);
 		ExtentManager.test.log(Status.INFO, "Actual First Name (Web): " + webFirstName);
 
-		Assert.assertEquals(webFirstName, expectedFirstName, "First name mismatch between Mobile & Web");
+		AssertHelper.assertEquals(webFirstName, expectedFirstName, "First name mismatch between Mobile & Web");
 
 		ExtentManager.test.log(Status.PASS, "Latest mobile case verified successfully on Web");
 

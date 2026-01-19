@@ -1,62 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="2" passed="1" failed="1" skipped="0">
+<testng-results ignored="0" total="6" passed="6" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-01-16T18:04:12 IST" name="Suite" finished-at="2026-01-16T18:04:39 IST" duration-ms="26758">
+  <suite started-at="2026-01-19T18:26:30 IST" name="Suite" finished-at="2026-01-19T18:27:04 IST" duration-ms="33768">
     <groups>
     </groups>
-    <test started-at="2026-01-16T18:04:12 IST" name="Test" finished-at="2026-01-16T18:04:39 IST" duration-ms="26758">
-      <class name="com.aarogya.testcases.WebSiteCoOrdinatorTest">
-        <test-method signature="verifyLatestCaseFromMobileOnWeb()[pri:4, instance:com.aarogya.testcases.WebSiteCoOrdinatorTest@38425407]" started-at="2026-01-16T18:04:12 IST" name="verifyLatestCaseFromMobileOnWeb" finished-at="2026-01-16T18:04:33 IST" duration-ms="20470" status="FAIL">
-          <exception class="java.lang.AssertionError">
-            <message>
-              <![CDATA[First name mismatch between Mobile & Web expected [null] but found [test]]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: First name mismatch between Mobile & Web expected [null] but found [test]
-at org.testng.Assert.fail(Assert.java:111)
-at org.testng.Assert.failNotEquals(Assert.java:1590)
-at org.testng.Assert.assertEqualsImpl(Assert.java:150)
-at org.testng.Assert.assertEquals(Assert.java:132)
-at org.testng.Assert.assertEquals(Assert.java:656)
-at com.aarogya.testcases.WebSiteCoOrdinatorTest.verifyLatestCaseFromMobileOnWeb(WebSiteCoOrdinatorTest.java:36)
-at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:687)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:995)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-at org.testng.TestRunner.privateRun(TestRunner.java:741)
-at org.testng.TestRunner.run(TestRunner.java:616)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-at org.testng.TestNG.runSuites(TestNG.java:1112)
-at org.testng.TestNG.run(TestNG.java:1079)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.AssertionError -->
+    <test started-at="2026-01-19T18:26:30 IST" name="Aarogya Aarohan Mobile And Web App" finished-at="2026-01-19T18:27:04 IST" duration-ms="33768">
+      <class name="com.aarogya.testcases.WebSuperSpecialistTestCase">
+        <test-method signature="logInSuperSpecialist()[pri:10, instance:com.aarogya.testcases.WebSuperSpecialistTestCase@7586beff]" started-at="2026-01-19T18:26:50 IST" name="logInSuperSpecialist" finished-at="2026-01-19T18:26:57 IST" duration-ms="7078" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyLatestCaseFromMobileOnWeb -->
-        <test-method signature="logoutSiteCoordinator()[pri:5, instance:com.aarogya.testcases.WebSiteCoOrdinatorTest@38425407]" started-at="2026-01-16T18:04:33 IST" name="logoutSiteCoordinator" finished-at="2026-01-16T18:04:39 IST" duration-ms="5978" status="PASS">
+        </test-method> <!-- logInSuperSpecialist -->
+        <test-method signature="verifySuperSpecialistSubmitCase()[pri:11, instance:com.aarogya.testcases.WebSuperSpecialistTestCase@7586beff]" started-at="2026-01-19T18:26:57 IST" name="verifySuperSpecialistSubmitCase" finished-at="2026-01-19T18:27:02 IST" duration-ms="4345" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- logoutSiteCoordinator -->
-      </class> <!-- com.aarogya.testcases.WebSiteCoOrdinatorTest -->
-    </test> <!-- Test -->
+        </test-method> <!-- verifySuperSpecialistSubmitCase -->
+        <test-method signature="logoutSuperSpecialist()[pri:12, instance:com.aarogya.testcases.WebSuperSpecialistTestCase@7586beff]" started-at="2026-01-19T18:27:02 IST" name="logoutSuperSpecialist" finished-at="2026-01-19T18:27:04 IST" duration-ms="2362" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- logoutSuperSpecialist -->
+      </class> <!-- com.aarogya.testcases.WebSuperSpecialistTestCase -->
+      <class name="com.aarogya.testcases.WebSpecialistTestCase">
+        <test-method signature="logInSpecialist()[pri:7, instance:com.aarogya.testcases.WebSpecialistTestCase@6025e1b6]" started-at="2026-01-19T18:26:30 IST" name="logInSpecialist" finished-at="2026-01-19T18:26:43 IST" duration-ms="12229" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- logInSpecialist -->
+        <test-method signature="verifySpecialistSubmitCaseForSecondOpinon()[pri:8, instance:com.aarogya.testcases.WebSpecialistTestCase@6025e1b6]" started-at="2026-01-19T18:26:43 IST" name="verifySpecialistSubmitCaseForSecondOpinon" finished-at="2026-01-19T18:26:48 IST" duration-ms="5030" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifySpecialistSubmitCaseForSecondOpinon -->
+        <test-method signature="logoutSpecialist()[pri:9, instance:com.aarogya.testcases.WebSpecialistTestCase@6025e1b6]" started-at="2026-01-19T18:26:48 IST" name="logoutSpecialist" finished-at="2026-01-19T18:26:50 IST" duration-ms="2483" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- logoutSpecialist -->
+      </class> <!-- com.aarogya.testcases.WebSpecialistTestCase -->
+    </test> <!-- Aarogya Aarohan Mobile And Web App -->
   </suite> <!-- Suite -->
 </testng-results>

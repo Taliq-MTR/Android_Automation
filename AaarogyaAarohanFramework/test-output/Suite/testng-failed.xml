@@ -4,13 +4,13 @@
   <listeners>
     <listener class-name="com.aarogya.listener.TestListener"/>
   </listeners>
-  <test thread-count="5" name="Test(failed)">
+  <test thread-count="5" name="Aarogya Aarohan Mobile And Web App(failed)">
     <classes>
-      <class name="com.aarogya.testcases.WebSiteCoOrdinatorTest">
+      <class name="com.aarogya.testcases.WebSuperSpecialistTestCase">
         <methods>
-          <include name="verifyLatestCaseFromMobileOnWeb"/>
+          <include name="verifySuperSpecialistSubmitCase"/>
         </methods>
-      </class> <!-- com.aarogya.testcases.WebSiteCoOrdinatorTest -->
+      </class> <!-- com.aarogya.testcases.WebSuperSpecialistTestCase -->
     </classes>
-  </test> <!-- Test(failed) -->
+  </test> <!-- Aarogya Aarohan Mobile And Web App(failed) -->
 </suite> <!-- Failed suite [Suite] -->
