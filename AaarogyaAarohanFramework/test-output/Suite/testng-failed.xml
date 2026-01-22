@@ -6,11 +6,12 @@
   </listeners>
   <test thread-count="5" name="Aarogya Aarohan Mobile And Web App(failed)">
     <classes>
-      <class name="com.aarogya.testcases.WebSuperSpecialistTestCase">
+      <class name="com.aarogya.testcases.WebSpecialistTestCase">
         <methods>
-          <include name="verifySuperSpecialistSubmitCase"/>
+          <include name="verifySpecialistSubmitCaseForSecondOpinon"/>
+          <include name="verifySpecialistDiagnosisSubmissionFlow"/>
         </methods>
-      </class> <!-- com.aarogya.testcases.WebSuperSpecialistTestCase -->
+      </class> <!-- com.aarogya.testcases.WebSpecialistTestCase -->
     </classes>
   </test> <!-- Aarogya Aarohan Mobile And Web App(failed) -->
 </suite> <!-- Failed suite [Suite] -->

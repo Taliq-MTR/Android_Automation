@@ -1,38 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="6" passed="6" failed="0" skipped="0">
+<testng-results ignored="0" total="5" passed="5" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-01-19T18:26:30 IST" name="Suite" finished-at="2026-01-19T18:27:04 IST" duration-ms="33768">
+  <suite started-at="2026-01-21T19:38:43 IST" name="Suite" finished-at="2026-01-21T19:40:23 IST" duration-ms="100465">
     <groups>
     </groups>
-    <test started-at="2026-01-19T18:26:30 IST" name="Aarogya Aarohan Mobile And Web App" finished-at="2026-01-19T18:27:04 IST" duration-ms="33768">
-      <class name="com.aarogya.testcases.WebSuperSpecialistTestCase">
-        <test-method signature="logInSuperSpecialist()[pri:10, instance:com.aarogya.testcases.WebSuperSpecialistTestCase@7586beff]" started-at="2026-01-19T18:26:50 IST" name="logInSuperSpecialist" finished-at="2026-01-19T18:26:57 IST" duration-ms="7078" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- logInSuperSpecialist -->
-        <test-method signature="verifySuperSpecialistSubmitCase()[pri:11, instance:com.aarogya.testcases.WebSuperSpecialistTestCase@7586beff]" started-at="2026-01-19T18:26:57 IST" name="verifySuperSpecialistSubmitCase" finished-at="2026-01-19T18:27:02 IST" duration-ms="4345" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifySuperSpecialistSubmitCase -->
-        <test-method signature="logoutSuperSpecialist()[pri:12, instance:com.aarogya.testcases.WebSuperSpecialistTestCase@7586beff]" started-at="2026-01-19T18:27:02 IST" name="logoutSuperSpecialist" finished-at="2026-01-19T18:27:04 IST" duration-ms="2362" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- logoutSuperSpecialist -->
-      </class> <!-- com.aarogya.testcases.WebSuperSpecialistTestCase -->
+    <test started-at="2026-01-21T19:38:43 IST" name="Aarogya Aarohan Mobile And Web App" finished-at="2026-01-21T19:40:23 IST" duration-ms="100465">
       <class name="com.aarogya.testcases.WebSpecialistTestCase">
-        <test-method signature="logInSpecialist()[pri:7, instance:com.aarogya.testcases.WebSpecialistTestCase@6025e1b6]" started-at="2026-01-19T18:26:30 IST" name="logInSpecialist" finished-at="2026-01-19T18:26:43 IST" duration-ms="12229" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.aarogya.testcases.WebSpecialistTestCase@b3ca52e]" started-at="2026-01-21T19:38:37 IST" name="setup" finished-at="2026-01-21T19:38:43 IST" duration-ms="5574" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="logInSpecialist()[pri:7, instance:com.aarogya.testcases.WebSpecialistTestCase@b3ca52e]" started-at="2026-01-21T19:38:43 IST" name="logInSpecialist" finished-at="2026-01-21T19:38:57 IST" duration-ms="13945" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logInSpecialist -->
-        <test-method signature="verifySpecialistSubmitCaseForSecondOpinon()[pri:8, instance:com.aarogya.testcases.WebSpecialistTestCase@6025e1b6]" started-at="2026-01-19T18:26:43 IST" name="verifySpecialistSubmitCaseForSecondOpinon" finished-at="2026-01-19T18:26:48 IST" duration-ms="5030" status="PASS">
+        <test-method signature="verifyDashboardFilterCountsForSpecialist()[pri:8, instance:com.aarogya.testcases.WebSpecialistTestCase@b3ca52e]" started-at="2026-01-21T19:38:57 IST" name="verifyDashboardFilterCountsForSpecialist" finished-at="2026-01-21T19:39:08 IST" duration-ms="11454" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyDashboardFilterCountsForSpecialist -->
+        <test-method signature="verifySpecialistDiagnosisSubmissionFlow()[pri:9, instance:com.aarogya.testcases.WebSpecialistTestCase@b3ca52e]" started-at="2026-01-21T19:39:08 IST" name="verifySpecialistDiagnosisSubmissionFlow" finished-at="2026-01-21T19:39:58 IST" duration-ms="50017" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifySpecialistDiagnosisSubmissionFlow -->
+        <test-method signature="verifySpecialistSubmitCaseForSecondOpinon()[pri:10, instance:com.aarogya.testcases.WebSpecialistTestCase@b3ca52e]" started-at="2026-01-21T19:39:58 IST" name="verifySpecialistSubmitCaseForSecondOpinon" finished-at="2026-01-21T19:40:20 IST" duration-ms="21506" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifySpecialistSubmitCaseForSecondOpinon -->
-        <test-method signature="logoutSpecialist()[pri:9, instance:com.aarogya.testcases.WebSpecialistTestCase@6025e1b6]" started-at="2026-01-19T18:26:48 IST" name="logoutSpecialist" finished-at="2026-01-19T18:26:50 IST" duration-ms="2483" status="PASS">
+        <test-method signature="logoutSpecialist()[pri:11, instance:com.aarogya.testcases.WebSpecialistTestCase@b3ca52e]" started-at="2026-01-21T19:40:20 IST" name="logoutSpecialist" finished-at="2026-01-21T19:40:23 IST" duration-ms="3350" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logoutSpecialist -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.aarogya.testcases.WebSpecialistTestCase@b3ca52e]" started-at="2026-01-21T19:40:24 IST" name="tearDown" finished-at="2026-01-21T19:40:27 IST" duration-ms="3424" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
       </class> <!-- com.aarogya.testcases.WebSpecialistTestCase -->
     </test> <!-- Aarogya Aarohan Mobile And Web App -->
   </suite> <!-- Suite -->

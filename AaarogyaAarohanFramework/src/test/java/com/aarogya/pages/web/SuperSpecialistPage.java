@@ -61,6 +61,17 @@ public class SuperSpecialistPage {
 	@FindBy(xpath = "//p[contains(text(),'Diagnosis Submitted')]")
 	private WebElement submitSuccessMsg;
 
+	@FindBy(xpath = "//span[text()='Aarogya Aarohan']")
+	private WebElement dashBoard;
+
+	// ================= TASK SUMMARY =================
+
+	@FindBy(xpath = "//div[text()='Completed diagnosis']/following-sibling::div")
+	private WebElement completedDiagnosisCount;
+
+	@FindBy(xpath = "//div[text()='Pending for diagnosis']/following-sibling::div")
+	private WebElement pendingDiagnosisCount;
+
 	// ================= SCROLL HELPER =================
 
 	private void scrollToElement(WebElement element) {
@@ -118,9 +129,17 @@ public class SuperSpecialistPage {
 	}
 
 	public void selectRandomOralCavitySite() {
+		try {
 		wait.until(ExpectedConditions.visibilityOf(oralCavitySiteDropdown));
 		scrollToElement(oralCavitySiteDropdown);
 		selectRandomFromDropdown(oralCavitySiteDropdown, "Oral Cavity Site");
+		
+			Thread.sleep(1000);
+			ExtentManager.test.log(Status.PASS, "Oral Cavity selected randomly ");
+
+		} catch (Exception e) {
+			ExtentManager.test.log(Status.FAIL, "Oral Cavity selected randomly failed: " + e);
+		}
 	}
 
 	// ================= RANDOM CHECKBOX =================
@@ -128,7 +147,7 @@ public class SuperSpecialistPage {
 	public void selectRandomRecommendation() {
 		try {
 			scrollToElement(urgentReferralCheckbox);
-
+			Thread.sleep(2000);
 			WebElement[] recommendations = { urgentReferralCheckbox, additionalInvestigationCheckbox,
 					retakePhotoCheckbox, quitHabitCheckbox };
 
@@ -174,11 +193,23 @@ public class SuperSpecialistPage {
 			submitButton.click();
 			Thread.sleep(2000);
 			wait.until(ExpectedConditions.visibilityOf(submitSuccessMsg));
-			
+
 			ExtentManager.test.log(Status.PASS, "Super Specialist submitted the case");
 
 		} catch (Exception e) {
 			ExtentManager.test.log(Status.FAIL, "Super Specialist submit failed: " + e);
+		}
+	}
+
+	public void dashboard() {
+		try {
+
+			wait.until(ExpectedConditions.visibilityOf(submitSuccessMsg));
+			dashBoard.click();
+			ExtentManager.test.log(Status.PASS, "Came Back To Dahboard");
+
+		} catch (Exception e) {
+			ExtentManager.test.log(Status.FAIL, "Failed to  Back To Dahboard: " + e);
 		}
 	}
 
@@ -190,4 +221,26 @@ public class SuperSpecialistPage {
 			return null;
 		}
 	}
+
+	// ================= DASHBOARD DATA METHODS =================
+
+	public int getCompletedDiagnosisCount() {
+		return Integer.parseInt(wait.until(ExpectedConditions.visibilityOf(completedDiagnosisCount)).getText().trim());
+	}
+
+	public int getPendingDiagnosisCount() {
+		return Integer.parseInt(wait.until(ExpectedConditions.visibilityOf(pendingDiagnosisCount)).getText().trim());
+	}
+
+	public int[] getDashboardCountsAfterSubmit(int completedBefore) {
+
+		wait.until(ExpectedConditions.not(
+				ExpectedConditions.textToBePresentInElement(completedDiagnosisCount, String.valueOf(completedBefore))));
+
+		int completedAfter = getCompletedDiagnosisCount();
+		int pendingAfter = getPendingDiagnosisCount();
+
+		return new int[] { completedAfter, pendingAfter };
+	}
+
 }

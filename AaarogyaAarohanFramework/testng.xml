@@ -9,10 +9,22 @@
    
    
     <classes>
-    
 
     	<class name="com.aarogya.testcases.WebSpecialistTestCase"/>
-    	<class name="com.aarogya.testcases.WebSuperSpecialistTestCase"/>
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
     	
       
       <!-- 
