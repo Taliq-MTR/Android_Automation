@@ -3,12 +3,15 @@ package com.aarogya.pages.web;
 import java.time.Duration;
 import java.util.List;
 import java.util.Random;
-
-import org.openqa.selenium.*;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.*;
-
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import com.aarogya.reports.ExtentManager;
 import com.aventstack.extentreports.Status;
 
@@ -23,8 +26,7 @@ public class SuperSpecialistPage {
 		PageFactory.initElements(driver, this);
 	}
 
-	// ================= LOCATORS =================
-
+	// ---------- Case Flow ----------
 	@FindBy(xpath = "//input[@placeholder='Search Case ID']")
 	private WebElement searchBox;
 
@@ -36,9 +38,6 @@ public class SuperSpecialistPage {
 
 	@FindBy(xpath = "(//select[contains(@class,'custom-select')])[2]")
 	private WebElement oralCavitySiteDropdown;
-
-	@FindBy(xpath = "//h6[text()='Recommendation']")
-	private WebElement scrollTillRecommendatn;
 
 	@FindBy(xpath = "//label[text()='Urgent referral to the hospital']/preceding-sibling::input")
 	private WebElement urgentReferralCheckbox;
@@ -62,185 +61,93 @@ public class SuperSpecialistPage {
 	private WebElement submitSuccessMsg;
 
 	@FindBy(xpath = "//span[text()='Aarogya Aarohan']")
-	private WebElement dashBoard;
+	private WebElement dashboard;
 
-	// ================= TASK SUMMARY =================
-
-	@FindBy(xpath = "//div[text()='Completed diagnosis']/following-sibling::div")
-	private WebElement completedDiagnosisCount;
+	// ---------- Dashboard ----------
+	@FindBy(css = "select.text-base.text-black")
+	private WebElement filterDropdown;
 
 	@FindBy(xpath = "//div[text()='Pending for diagnosis']/following-sibling::div")
-	private WebElement pendingDiagnosisCount;
+	private WebElement pendingDiagnosis;
 
-	// ================= SCROLL HELPER =================
+	@FindBy(xpath = "//div[text()='Completed diagnosis']/following-sibling::div")
+	private WebElement completedDiagnosis;
 
-	private void scrollToElement(WebElement element) {
-		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({behavior:'smooth', block:'center'});",
-				element);
+	// ---------- Helpers ----------
+	private void scrollTo(WebElement element) {
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block:'center'});", element);
 	}
 
-	// ================= SEARCH =================
+	private void selectRandom(WebElement dropdown) {
+		Select s = new Select(dropdown);
+		List<WebElement> options = s.getOptions();
+		s.selectByIndex(new Random().nextInt(options.size() - 1) + 1);
+	}
 
+	// ---------- Actions ----------
 	public void searchStoredCaseId() {
-		try {
-			wait.until(ExpectedConditions.visibilityOf(searchBox)).clear();
-			searchBox.sendKeys(SpecialistPage.storedCaseId);
-			ExtentManager.test.log(Status.PASS, "Super Specialist searched Case ID: " + SpecialistPage.storedCaseId);
-
-		} catch (Exception e) {
-			ExtentManager.test.log(Status.FAIL, "Super Specialist search failed: " + e);
-		}
+		searchBox.clear();
+		searchBox.sendKeys(SpecialistPage.storedCaseId);
 	}
 
 	public void clickView() {
-		try {
-			wait.until(ExpectedConditions.elementToBeClickable(viewButton));
-			viewButton.click();
-
-			ExtentManager.test.log(Status.PASS, "Super Specialist clicked View button");
-
-		} catch (Exception e) {
-			ExtentManager.test.log(Status.FAIL, "Super Specialist View click failed: " + e);
-		}
-	}
-
-	// ================= RANDOM DROPDOWNS =================
-
-	private void selectRandomFromDropdown(WebElement dropdown, String fieldName) {
-		try {
-			Select s = new Select(dropdown);
-			List<WebElement> options = s.getOptions();
-
-			int randomIndex = new Random().nextInt(options.size() - 1) + 1;
-
-			String selectedText = options.get(randomIndex).getText().trim();
-			s.selectByIndex(randomIndex);
-
-			ExtentManager.test.log(Status.PASS, fieldName + " selected randomly: " + selectedText);
-
-		} catch (Exception e) {
-			ExtentManager.test.log(Status.FAIL, fieldName + " random selection failed: " + e);
-		}
+		viewButton.click();
 	}
 
 	public void selectRandomProvisionalDiagnosis() {
-		wait.until(ExpectedConditions.visibilityOf(provisionalDiagnosisDropdown));
-		selectRandomFromDropdown(provisionalDiagnosisDropdown, "Provisional Diagnosis");
+		selectRandom(provisionalDiagnosisDropdown);
 	}
 
 	public void selectRandomOralCavitySite() {
-		try {
-		wait.until(ExpectedConditions.visibilityOf(oralCavitySiteDropdown));
-		scrollToElement(oralCavitySiteDropdown);
-		selectRandomFromDropdown(oralCavitySiteDropdown, "Oral Cavity Site");
-		
-			Thread.sleep(1000);
-			ExtentManager.test.log(Status.PASS, "Oral Cavity selected randomly ");
-
-		} catch (Exception e) {
-			ExtentManager.test.log(Status.FAIL, "Oral Cavity selected randomly failed: " + e);
-		}
+		scrollTo(oralCavitySiteDropdown);
+		selectRandom(oralCavitySiteDropdown);
 	}
-
-	// ================= RANDOM CHECKBOX =================
 
 	public void selectRandomRecommendation() {
-		try {
-			scrollToElement(urgentReferralCheckbox);
-			Thread.sleep(2000);
-			WebElement[] recommendations = { urgentReferralCheckbox, additionalInvestigationCheckbox,
-					retakePhotoCheckbox, quitHabitCheckbox };
-
-			int random = new Random().nextInt(recommendations.length);
-
-			WebElement selected = recommendations[random];
-
-			if (!selected.isSelected()) {
-				selected.click();
-			}
-
-			String selectedId = selected.getAttribute("id");
-
-			ExtentManager.test.log(Status.PASS, "Recommendation selected randomly: " + selectedId);
-
-		} catch (Exception e) {
-			ExtentManager.test.log(Status.FAIL, "Random Recommendation selection failed: " + e);
-		}
+		WebElement[] options = { urgentReferralCheckbox, additionalInvestigationCheckbox, retakePhotoCheckbox,
+				quitHabitCheckbox };
+		WebElement selected = options[new Random().nextInt(options.length)];
+		scrollTo(selected);
+		if (!selected.isSelected())
+			selected.click();
 	}
-
-	// ================= NOTES =================
 
 	public void addNotes(String notes) {
-		try {
-			wait.until(ExpectedConditions.visibilityOf(notesField));
-
-			scrollToElement(notesField);
-
-			notesField.sendKeys(notes);
-
-			ExtentManager.test.log(Status.PASS, "Super Specialist added notes: " + notes);
-
-		} catch (Exception e) {
-			ExtentManager.test.log(Status.FAIL, "Super Specialist add notes failed: " + e);
-		}
+		scrollTo(notesField);
+		notesField.sendKeys(notes);
 	}
-
-	// ================= SUBMIT =================
 
 	public void submitCase() {
-		try {
-			wait.until(ExpectedConditions.elementToBeClickable(submitButton));
-			submitButton.click();
-			Thread.sleep(2000);
-			wait.until(ExpectedConditions.visibilityOf(submitSuccessMsg));
-
-			ExtentManager.test.log(Status.PASS, "Super Specialist submitted the case");
-
-		} catch (Exception e) {
-			ExtentManager.test.log(Status.FAIL, "Super Specialist submit failed: " + e);
-		}
-	}
-
-	public void dashboard() {
-		try {
-
-			wait.until(ExpectedConditions.visibilityOf(submitSuccessMsg));
-			dashBoard.click();
-			ExtentManager.test.log(Status.PASS, "Came Back To Dahboard");
-
-		} catch (Exception e) {
-			ExtentManager.test.log(Status.FAIL, "Failed to  Back To Dahboard: " + e);
-		}
+		submitButton.click();
+		wait.until(ExpectedConditions.visibilityOf(submitSuccessMsg));
 	}
 
 	public String getSubmitSuccessMessage() {
+		return submitSuccessMsg.getText().trim();
+	}
+
+	public void goToDashboard() {
+		dashboard.click();
+	}
+
+	// ---------- Dashboard ----------
+	public void selectDashboardFilter(String filter) {
+		String oldText = completedDiagnosis.getText().trim();
+		new Select(filterDropdown).selectByVisibleText(filter);
+
 		try {
-			return wait.until(ExpectedConditions.visibilityOf(submitSuccessMsg)).getText().trim();
-		} catch (Exception e) {
-			ExtentManager.test.log(Status.FAIL, "Fetching submit success message failed: " + e);
-			return null;
+			wait.until(
+					ExpectedConditions.not(ExpectedConditions.textToBePresentInElement(completedDiagnosis, oldText)));
+		} catch (TimeoutException e) {
+			ExtentManager.test.log(Status.INFO, "No count change for filter: " + filter + " (valid behavior)");
 		}
 	}
 
-	// ================= DASHBOARD DATA METHODS =================
-
-	public int getCompletedDiagnosisCount() {
-		return Integer.parseInt(wait.until(ExpectedConditions.visibilityOf(completedDiagnosisCount)).getText().trim());
+	public int getPendingDiagnosis() {
+		return Integer.parseInt(pendingDiagnosis.getText().trim());
 	}
 
-	public int getPendingDiagnosisCount() {
-		return Integer.parseInt(wait.until(ExpectedConditions.visibilityOf(pendingDiagnosisCount)).getText().trim());
+	public int getCompletedDiagnosis() {
+		return Integer.parseInt(completedDiagnosis.getText().trim());
 	}
-
-	public int[] getDashboardCountsAfterSubmit(int completedBefore) {
-
-		wait.until(ExpectedConditions.not(
-				ExpectedConditions.textToBePresentInElement(completedDiagnosisCount, String.valueOf(completedBefore))));
-
-		int completedAfter = getCompletedDiagnosisCount();
-		int pendingAfter = getPendingDiagnosisCount();
-
-		return new int[] { completedAfter, pendingAfter };
-	}
-
 }

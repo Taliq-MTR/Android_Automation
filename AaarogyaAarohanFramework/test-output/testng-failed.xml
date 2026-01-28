@@ -8,10 +8,21 @@
     <classes>
       <class name="com.aarogya.testcases.WebSpecialistTestCase">
         <methods>
+          <include name="verifyDashboardFilterCountsForSpecialist"/>
+          <include name="logInSpecialist"/>
           <include name="verifySpecialistSubmitCaseForSecondOpinon"/>
-          <include name="verifySpecialistDiagnosisSubmissionFlow"/>
+          <include name="logoutSpecialist"/>
         </methods>
       </class> <!-- com.aarogya.testcases.WebSpecialistTestCase -->
+      <class name="com.aarogya.testcases.WebSuperSpecialistTestCase">
+        <methods>
+          <include name="tearDown"/>
+          <include name="setup"/>
+          <include name="logoutSuperSpecialist"/>
+          <include name="loginSuperSpecialist"/>
+          <include name="verifyDashboardCountsForAllFiltersAfterSubmit"/>
+        </methods>
+      </class> <!-- com.aarogya.testcases.WebSuperSpecialistTestCase -->
     </classes>
   </test> <!-- Aarogya Aarohan Mobile And Web App(failed) -->
 </suite> <!-- Failed suite [Suite] -->

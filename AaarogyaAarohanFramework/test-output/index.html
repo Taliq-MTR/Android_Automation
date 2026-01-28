@@ -92,7 +92,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">5 methods,   5 passed</span>
+                    <span class="method-stats">7 methods,   7 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -108,17 +108,27 @@
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Suite" title="com.aarogya.testcases.WebSuperSpecialistTestCase" class="method navigator-link" hash-for-method="loginSuperSpecialist">loginSuperSpecialist</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
                         <a href="#" panel-name="suite-Suite" title="com.aarogya.testcases.WebSpecialistTestCase" class="method navigator-link" hash-for-method="logoutSpecialist">logoutSpecialist</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Suite" title="com.aarogya.testcases.WebSpecialistTestCase" class="method navigator-link" hash-for-method="verifyDashboardFilterCountsForSpecialist">verifyDashboardFilterCountsForSpecialist</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Suite" title="com.aarogya.testcases.WebSuperSpecialistTestCase" class="method navigator-link" hash-for-method="logoutSuperSpecialist">logoutSuperSpecialist</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Suite" title="com.aarogya.testcases.WebSpecialistTestCase" class="method navigator-link" hash-for-method="verifySpecialistDiagnosisSubmissionFlow">verifySpecialistDiagnosisSubmissionFlow</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Suite" title="com.aarogya.testcases.WebSuperSpecialistTestCase" class="method navigator-link" hash-for-method="verifyDashboardCountsForAllFiltersAfterSubmit">verifyDashboardCountsForAllFiltersAfterSubmit</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Suite" title="com.aarogya.testcases.WebSpecialistTestCase" class="method navigator-link" hash-for-method="verifyDashboardFilterCountsForSpecialist">verifyDashboardFilterCountsForSpecialist</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
@@ -167,16 +177,38 @@
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="verifySpecialistDiagnosisSubmissionFlow">
-                  </a> <!-- verifySpecialistDiagnosisSubmissionFlow -->
-                  <span class="method-name">verifySpecialistDiagnosisSubmissionFlow</span>
+                  <a name="verifySpecialistSubmitCaseForSecondOpinon">
+                  </a> <!-- verifySpecialistSubmitCaseForSecondOpinon -->
+                  <span class="method-name">verifySpecialistSubmitCaseForSecondOpinon</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Suite-class-passed -->
+          <div class="suite-Suite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">com.aarogya.testcases.WebSuperSpecialistTestCase</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="loginSuperSpecialist">
+                  </a> <!-- loginSuperSpecialist -->
+                  <span class="method-name">loginSuperSpecialist</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="verifySpecialistSubmitCaseForSecondOpinon">
-                  </a> <!-- verifySpecialistSubmitCaseForSecondOpinon -->
-                  <span class="method-name">verifySpecialistSubmitCaseForSecondOpinon</span>
+                  <a name="logoutSuperSpecialist">
+                  </a> <!-- logoutSuperSpecialist -->
+                  <span class="method-name">logoutSuperSpecialist</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="verifyDashboardCountsForAllFiltersAfterSubmit">
+                  </a> <!-- verifyDashboardCountsForAllFiltersAfterSubmit -->
+                  <span class="method-name">verifyDashboardCountsForAllFiltersAfterSubmit</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -197,6 +229,7 @@
   &lt;test thread-count=&quot;1&quot; name=&quot;Aarogya Aarohan Mobile And Web App&quot;&gt;
     &lt;classes&gt;
       &lt;class name=&quot;com.aarogya.testcases.WebSpecialistTestCase&quot;/&gt;
+      &lt;class name=&quot;com.aarogya.testcases.WebSuperSpecialistTestCase&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Aarogya Aarohan Mobile And Web App --&gt;
 &lt;/suite&gt; &lt;!-- Suite --&gt;
@@ -210,7 +243,7 @@
           <div class="main-panel-content rounded-window-bottom">
             <ul>
               <li>
-                <span class="test-name">Aarogya Aarohan Mobile And Web App (1 class)</span>
+                <span class="test-name">Aarogya Aarohan Mobile And Web App (2 classes)</span>
               </li>
             </ul>
           </div> <!-- main-panel-content rounded-window-bottom -->
@@ -236,32 +269,40 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(5);
+data.addRows(7);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'verifySpecialistDiagnosisSubmissionFlow')
-data.setCell(0, 2, 'com.aarogya.testcases.WebSpecialistTestCase')
-data.setCell(0, 3, 50017);
+data.setCell(0, 1, 'verifyDashboardCountsForAllFiltersAfterSubmit')
+data.setCell(0, 2, 'com.aarogya.testcases.WebSuperSpecialistTestCase')
+data.setCell(0, 3, 73106);
 data.setCell(1, 0, 1)
 data.setCell(1, 1, 'verifySpecialistSubmitCaseForSecondOpinon')
 data.setCell(1, 2, 'com.aarogya.testcases.WebSpecialistTestCase')
-data.setCell(1, 3, 21506);
+data.setCell(1, 3, 19065);
 data.setCell(2, 0, 2)
 data.setCell(2, 1, 'logInSpecialist')
 data.setCell(2, 2, 'com.aarogya.testcases.WebSpecialistTestCase')
-data.setCell(2, 3, 13945);
+data.setCell(2, 3, 12207);
 data.setCell(3, 0, 3)
 data.setCell(3, 1, 'verifyDashboardFilterCountsForSpecialist')
 data.setCell(3, 2, 'com.aarogya.testcases.WebSpecialistTestCase')
-data.setCell(3, 3, 11454);
+data.setCell(3, 3, 11862);
 data.setCell(4, 0, 4)
-data.setCell(4, 1, 'logoutSpecialist')
-data.setCell(4, 2, 'com.aarogya.testcases.WebSpecialistTestCase')
-data.setCell(4, 3, 3350);
+data.setCell(4, 1, 'loginSuperSpecialist')
+data.setCell(4, 2, 'com.aarogya.testcases.WebSuperSpecialistTestCase')
+data.setCell(4, 3, 7104);
+data.setCell(5, 0, 5)
+data.setCell(5, 1, 'logoutSuperSpecialist')
+data.setCell(5, 2, 'com.aarogya.testcases.WebSuperSpecialistTestCase')
+data.setCell(5, 3, 3192);
+data.setCell(6, 0, 6)
+data.setCell(6, 1, 'logoutSpecialist')
+data.setCell(6, 2, 'com.aarogya.testcases.WebSpecialistTestCase')
+data.setCell(6, 3, 3059);
 window.suiteTableData['Suite']= { tableData: data, tableDiv: 'times-div-Suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 1 minutes</span>
+              <span class="suite-total-time">Total running time: 2 minutes</span>
               <div id="times-div-Suite">
               </div> <!-- times-div-Suite -->
             </div> <!-- times-div -->
@@ -288,34 +329,37 @@ return data;
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
               <div class="chronological-class-name">com.aarogya.testcases.WebSpecialistTestCase</div> <!-- chronological-class-name -->
-              <div class="configuration-suite before">
-                <span class="method-name">setup</span>
-                <span class="method-start">0 ms</span>
-              </div> <!-- configuration-suite before -->
               <div class="test-method">
                 <span class="method-name">logInSpecialist</span>
-                <span class="method-start">5746 ms</span>
+                <span class="method-start">0 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">verifyDashboardFilterCountsForSpecialist</span>
-                <span class="method-start">19700 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">verifySpecialistDiagnosisSubmissionFlow</span>
-                <span class="method-start">31156 ms</span>
+                <span class="method-start">12223 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">verifySpecialistSubmitCaseForSecondOpinon</span>
-                <span class="method-start">81177 ms</span>
+                <span class="method-start">24090 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">logoutSpecialist</span>
-                <span class="method-start">102687 ms</span>
+                <span class="method-start">43163 ms</span>
               </div> <!-- test-method -->
-              <div class="configuration-suite after">
-                <span class="method-name">tearDown</span>
-                <span class="method-start">106547 ms</span>
-              </div> <!-- configuration-suite after -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">com.aarogya.testcases.WebSuperSpecialistTestCase</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">loginSuperSpecialist</span>
+                <span class="method-start">46228 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">verifyDashboardCountsForAllFiltersAfterSubmit</span>
+                <span class="method-start">53348 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">logoutSuperSpecialist</span>
+                <span class="method-start">126456 ms</span>
+              </div> <!-- test-method -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
       </div> <!-- main-panel-root -->

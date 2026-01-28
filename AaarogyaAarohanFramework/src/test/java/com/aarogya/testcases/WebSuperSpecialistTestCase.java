@@ -1,83 +1,93 @@
 package com.aarogya.testcases;
 
+import java.util.HashMap;
+import java.util.Map;
+import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import com.aarogya.base.AssertHelper;
 import com.aarogya.base.BaseTest;
 import com.aarogya.base.WebDriverManager;
-import com.aarogya.pages.web.SpecialistPage;
 import com.aarogya.pages.web.SuperSpecialistPage;
 import com.aarogya.pages.web.WebLogOutPage;
 import com.aarogya.pages.web.WebLoginPage;
 import com.aarogya.reports.ExtentManager;
 import com.aventstack.extentreports.Status;
 
-public class WebSuperSpecialistTestCase {
+public class WebSuperSpecialistTestCase extends BaseTest {
 
 	@Test(priority = 12)
-	public void logInSuperSpecialist() {
-		// 🔐 LOGIN
-		WebLoginPage loginPage = new WebLoginPage(WebDriverManager.getWebDriver());
-		loginPage.login("sspecialist1", "password");
-		ExtentManager.test.log(Status.PASS, "Super Specialist Login SuccessFull");
+	public void loginSuperSpecialist() {
+		new WebLoginPage(WebDriverManager.getWebDriver()).login("sspecialist1", "password");
 	}
 
 	@Test(priority = 13)
-	public void verifySuperSpecialistSubmitCaseAndDashboard() {
+	public void verifyDashboardCountsForAllFiltersAfterSubmit() {
 
-		SuperSpecialistPage superPage = new SuperSpecialistPage(WebDriverManager.getWebDriver());
+		SuperSpecialistPage page = new SuperSpecialistPage(WebDriverManager.getWebDriver());
 
-		String usedCaseId = SpecialistPage.storedCaseId;
+		String[] filters = { "Today", "Last 7 days", "Last 28 days", "Last 90 days", "All time" };
 
-		AssertHelper.assertTrue(usedCaseId != null, "No Case ID available for Super Specialist flow");
+		Map<String, int[]> before = new HashMap<>();
 
-		// ---- Capture Dashboard BEFORE ----
-		int completedBefore = superPage.getCompletedDiagnosisCount();
-		int pendingBefore = superPage.getPendingDiagnosisCount();
+		// ---- BEFORE ----
+		for (String filter : filters) {
+			page.selectDashboardFilter(filter);
+			before.put(filter, new int[] { page.getPendingDiagnosis(), page.getCompletedDiagnosis() });
+		}
 
-		ExtentManager.test.log(Status.INFO,
-				"Super Specialist Dashboard BEFORE | Completed: " + completedBefore + " | Pending: " + pendingBefore);
+		// ---- SUBMIT ----
+		page.searchStoredCaseId();
+		page.clickView();
+		page.selectRandomProvisionalDiagnosis();
+		page.selectRandomOralCavitySite();
+		page.selectRandomRecommendation();
+		page.addNotes("Super specialist review");
+		page.submitCase();
 
-		// ---- Perform Submit Flow ----
-		superPage.searchStoredCaseId();
-		superPage.clickView();
-		superPage.selectRandomProvisionalDiagnosis();
-		superPage.selectRandomOralCavitySite();
-		superPage.selectRandomRecommendation();
-		superPage.addNotes("Super specialist automation final review");
-		superPage.submitCase();
+		Assert.assertEquals(page.getSubmitSuccessMessage(), "Diagnosis Submitted");
 
-		String actualMsg = superPage.getSubmitSuccessMessage();
-		AssertHelper.assertEquals(actualMsg, "Diagnosis Submitted",
-				"Super specialist submission confirmation message mismatch");
+		page.goToDashboard();
 
-		ExtentManager.test.log(Status.PASS,
-				"Super Specialist submitted diagnosis successfully for Case ID: " + usedCaseId);
+		// ---- AFTER ----
+		for (String filter : filters) {
 
-		superPage.dashboard();
+			page.selectDashboardFilter(filter);
 
-		// ---- Capture Dashboard AFTER ----
-		int[] counts = superPage.getDashboardCountsAfterSubmit(completedBefore);
+			int pendingAfter = page.getPendingDiagnosis();
+			int completedAfter = page.getCompletedDiagnosis();
 
-		int completedAfter = counts[0];
-		int pendingAfter = counts[1];
+			int pendingBefore = before.get(filter)[0];
+			int completedBefore = before.get(filter)[1];
 
-		ExtentManager.test.log(Status.INFO,
-				"Super Specialist Dashboard AFTER | Completed: " + completedAfter + " | Pending: " + pendingAfter);
+			ExtentManager.test.log(Status.INFO, "Filter: " + filter + " | Before P:" + pendingBefore + " C:"
+					+ completedBefore + " | After P:" + pendingAfter + " C:" + completedAfter);
 
-		// ---- Assertions ----
-		AssertHelper.assertEquals(completedAfter, completedBefore + 1, "Completed diagnosis count not increased");
+			if (filter.equalsIgnoreCase("All time")) {
 
-		AssertHelper.assertEquals(pendingAfter, pendingBefore - 1, "Pending diagnosis count not decreased");
+				// 🔥 STRICT VALIDATION
+				Assert.assertEquals(completedAfter, completedBefore + 1, "Completed count mismatch for All time");
 
-		ExtentManager.test.log(Status.PASS, "Task summary validated successfully for Super Specialist");
+				Assert.assertEquals(pendingAfter, pendingBefore - 1, "Pending count mismatch for All time");
+
+			} else {
+
+				// ✅ CONDITIONAL VALIDATION
+				if (completedAfter != completedBefore || pendingAfter != pendingBefore) {
+
+					Assert.assertEquals(completedAfter, completedBefore + 1,
+							"Completed mismatch for filter: " + filter);
+
+					Assert.assertEquals(pendingAfter, pendingBefore - 1, "Pending mismatch for filter: " + filter);
+
+				} else {
+					ExtentManager.test.log(Status.INFO,
+							"No change for filter: " + filter + " (case not in date range)");
+				}
+			}
+		}
 	}
 
 	@Test(priority = 14)
 	public void logoutSuperSpecialist() {
-
-		WebLogOutPage logoutPage = new WebLogOutPage(WebDriverManager.getWebDriver());
-		logoutPage.logout();
-		ExtentManager.test.log(Status.PASS, "Super Specialist Logout Successful");
+		new WebLogOutPage(WebDriverManager.getWebDriver()).logout();
 	}
 }
