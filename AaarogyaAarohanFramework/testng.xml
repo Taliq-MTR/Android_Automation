@@ -9,9 +9,10 @@
    
    
     <classes>
-
-    	<class name="com.aarogya.testcases.WebSpecialistTestCase"/>
-    		<class name="com.aarogya.testcases.WebSuperSpecialistTestCase"/>
+    	 <class name="com.aarogya.testcases.LoginTestCase"/>
+		<class name="com.aarogya.testcases.RecommendationsTest"/>
+        
+    	
     	
     	
     	
@@ -31,7 +32,12 @@
       <!-- 
 		
 		
+		<class name="com.aarogya.testcases.HomeTestCase"/>
+        <class name="com.aarogya.testcases.LoginTestCase"/>
+        <class name="com.aarogya.testcases.AddTestCase"/>
 		
+		<class name="com.aarogya.testcases.WebSpecialistTestCase"/>
+    	<class name="com.aarogya.testcases.WebSuperSpecialistTestCase"/>
 		    	<class name="com.aarogya.testcases.HomeTestCase"/>
         <class name="com.aarogya.testcases.LoginTestCase"/>
         <class name="com.aarogya.testcases.AddTestCase"/>

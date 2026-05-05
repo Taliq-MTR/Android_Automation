@@ -1,7 +1,7 @@
+
 package com.aarogya.pages;
 
 import java.time.Duration;
-import java.util.List;
 import java.util.Random;
 
 import org.openqa.selenium.By;
@@ -17,11 +17,9 @@ import com.aventstack.extentreports.Status;
 
 import io.appium.java_client.android.AndroidDriver;
 
-public class AddTestPage {
+public class AddTestPhase2Page {
 
 	private AndroidDriver driver;
-
-	
 
 	@FindBy(xpath = "//android.widget.TextView[@text=\"Add new case\"]")
 	private WebElement addNewCase;
@@ -206,12 +204,11 @@ public class AddTestPage {
 	@FindBy(xpath = "//android.widget.Button")
 	private WebElement okayButton;
 
-	
-	public AddTestPage(AndroidDriver driver) {
+	public AddTestPhase2Page(AndroidDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
-	
+
 	public String getAddBttnText() {
 		try {
 			return addNewCase.getText();

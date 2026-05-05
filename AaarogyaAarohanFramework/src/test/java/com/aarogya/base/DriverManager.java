@@ -26,7 +26,7 @@ public class DriverManager {
                         .amend("platformName", "Android")
                         .amend("appium:automationName", "UiAutomator2")
                         .amend("appium:deviceName", "Android Device")
-                        .amend("appium:udid", "adb-665411ef-0sPZNY._adb-tls-connect._tcp")
+                        .amend("appium:udid", "ZN4227T7R6")
 
                         // ================= APP DETAILS =================
                         .amend("appium:appPackage", "in.ac.iisc.arogyam")

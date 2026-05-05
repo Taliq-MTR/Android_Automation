@@ -1,6 +1,8 @@
 package com.aarogya.pages;
 
 import java.time.Duration;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -48,38 +50,60 @@ public class LoginPage {
 
 	@FindBy(xpath = "//android.widget.TextView[@text=\"RECENTLY SUBMITTED\"]")
 	private WebElement waitMainPage;
+	
+	@FindBy(xpath = "//android.widget.TextView[@text=\"Notification Permission\"]")
+	private WebElement notificatnPermission;
+	
+	@FindBy(xpath = "//android.view.ViewGroup/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.widget.Button")
+	private WebElement notificatnYes;
+	
+	@FindBy(xpath = "//android.widget.Button[@resource-id=\"com.android.permissioncontroller:id/permission_allow_button\"]")
+	private WebElement notificatnAllow;
+	
 
 	// ------------------- ACTION METHODS -------------------
 
 	public void clickLogin() {
-
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
 		// Login
 		entrEmail.sendKeys("flw1");
 		entrPass.sendKeys("password");
 		ClickCheckBox.click();
 		ClickLogin.click();
-
-		// Wait for PIN screen
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
-		wait.until(ExpectedConditions.visibilityOf(waitPin));
-
-		// Tap first PIN box only
-		setPin1.click();
-
-		// Enter PIN (1111)
-		enterPin();
-
-		// Click SET PIN button
-		clcSetPin.click();
-
-		// Wait for Main screen
-		wait.until(ExpectedConditions.visibilityOf(waitMainPage));
+		
+		if(driver
+				.findElements(By.xpath("//android.widget.TextView[@text=\"Notification Permission\"]"))
+				.size() > 0)  {
+			notificatnYes.click();
+			notificatnAllow.click();
+		}
+		addPin();
+		
 
 	}
 
 	// ------------------- PIN ENTRY -------------------
 
 	// Simple PIN entry method (always 1111)
+	
+	public void addPin() {
+		// Wait for PIN screen
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+				wait.until(ExpectedConditions.visibilityOf(waitPin));
+
+				// Tap first PIN box only
+				setPin1.click();
+
+				// Enter PIN (1111)
+				enterPin();
+
+				// Click SET PIN button
+				clcSetPin.click();
+
+				// Wait for Main screen
+				wait.until(ExpectedConditions.visibilityOf(waitMainPage));
+	}
+	
 	public void enterPin() {
 		for (int i = 0; i < 4; i++) {
 			driver.pressKey(new KeyEvent(AndroidKey.DIGIT_1));

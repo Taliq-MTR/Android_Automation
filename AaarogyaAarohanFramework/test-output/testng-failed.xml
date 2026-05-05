@@ -6,23 +6,13 @@
   </listeners>
   <test thread-count="5" name="Aarogya Aarohan Mobile And Web App(failed)">
     <classes>
-      <class name="com.aarogya.testcases.WebSpecialistTestCase">
-        <methods>
-          <include name="verifyDashboardFilterCountsForSpecialist"/>
-          <include name="logInSpecialist"/>
-          <include name="verifySpecialistSubmitCaseForSecondOpinon"/>
-          <include name="logoutSpecialist"/>
-        </methods>
-      </class> <!-- com.aarogya.testcases.WebSpecialistTestCase -->
-      <class name="com.aarogya.testcases.WebSuperSpecialistTestCase">
+      <class name="com.aarogya.testcases.RecommendationsTest">
         <methods>
           <include name="tearDown"/>
           <include name="setup"/>
-          <include name="logoutSuperSpecialist"/>
-          <include name="loginSuperSpecialist"/>
-          <include name="verifyDashboardCountsForAllFiltersAfterSubmit"/>
+          <include name="recommendationFlowTest"/>
         </methods>
-      </class> <!-- com.aarogya.testcases.WebSuperSpecialistTestCase -->
+      </class> <!-- com.aarogya.testcases.RecommendationsTest -->
     </classes>
   </test> <!-- Aarogya Aarohan Mobile And Web App(failed) -->
 </suite> <!-- Failed suite [Suite] -->
