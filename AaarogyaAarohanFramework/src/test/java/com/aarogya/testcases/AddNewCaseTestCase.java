@@ -1,24 +1,36 @@
 package com.aarogya.testcases;
 
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.aarogya.base.AssertHelper;
 import com.aarogya.base.BaseTest;
 import com.aarogya.base.DriverManager;
-import com.aarogya.pages.AddTestPage;
+import com.aarogya.pages.AddNewCasePage;
+import com.aarogya.reports.ExtentManager;
+import com.aventstack.extentreports.Status;
 
-public class AddTestCase extends BaseTest {
+public class AddNewCaseTestCase extends BaseTest {
+
+	@BeforeClass
+	public void setAndroidExecutionType() {
+		BaseTest.setExecutionType("ANDROID");
+		DriverManager.getDriver();
+	}
 
 	@Test(priority = 3)
-	public void addingTestCase() {
-		AddTestPage addTest = new AddTestPage(DriverManager.getDriver());
-		AssertHelper.softAssertEquals(addTest.getAddBttnText(), "Add new case",
-				"Add New Case text did not match expected!");// --- Collect all soft assertions ---
+	public void AddingNewase() {
+		AddNewCasePage addTest = new AddNewCasePage(DriverManager.getDriver());
+		AssertHelper.softAssertTrue(addTest.isAddNewCaseVisible(), "Add New Case button is visible",
+				"Add New Case button is not visible");
 		addTest.clickAddTestBttn();
 		AssertHelper.softAssertEquals(addTest.getBasicInfoText(), "Basic Information",
 				"Basic Information Page text did not match expected!");// --- Collect all soft assertions ---
 		// 🔥 Capture the unique created name
 		String createdName = addTest.basicInfoPage();
+		ExtentManager.test.log(Status.INFO, "Created Case Name = " + createdName);
+
+		System.out.println("Created Case Name = " + createdName);
 		// ✅ PASS TO WEB TEST
 		WebSiteCoOrdinatorTest.expectedFirstName = createdName;
 		AssertHelper.softAssertEquals(addTest.getHabitHistoryText(), "Habit History",
@@ -30,6 +42,7 @@ public class AddTestCase extends BaseTest {
 		AssertHelper.softAssertEquals(addTest.getImageScreeningText(), "Image Screening",
 				"Image Screening Form text did not match expected!");// --- Collect all soft assertions ---
 		addTest.imageScreeningWithPermission();
+		addTest.imagePreview();
 		addTest.submitForm();
 		addTest.waitForPage();
 
@@ -41,7 +54,12 @@ public class AddTestCase extends BaseTest {
 
 		AssertHelper.softAssertEquals(isVisible ? "VISIBLE" : "NOT_VISIBLE", "VISIBLE",
 				"Recently Submitted case name not visible!");
+		addTest.captureReferenceIdAndVisitedTime();
 
+		AssertHelper.softAssertTrue(
+				AddNewCasePage.generatedReferenceId != null
+						&& !AddNewCasePage.generatedReferenceId.equalsIgnoreCase("Not Available"),
+				"Reference ID generated successfully", "Reference ID was not generated");
 		// ⭐ NEW ASSERTION: Sync must complete
 		boolean syncCompleted = addTest.waitUntilSyncSafelyCompletes();
 

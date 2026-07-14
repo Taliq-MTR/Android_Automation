@@ -37,7 +37,7 @@ public class WebLoginPage {
 	@FindBy(id = "password")
 	private WebElement passwordField;
 
-	@FindBy(xpath = "//input[@type='submit']")
+	@FindBy(xpath = "//button[@type='submit']")
 	private WebElement loginButton;
 
 	@FindBy(xpath = "//p[normalize-space()='Reports & Summary']")

@@ -64,7 +64,7 @@ public class LoginPage {
 	// ------------------- ACTION METHODS -------------------
 
 	public void clickLogin() {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(350));
 		// Login
 		entrEmail.sendKeys("flw1");
 		entrPass.sendKeys("password");
@@ -88,7 +88,7 @@ public class LoginPage {
 	
 	public void addPin() {
 		// Wait for PIN screen
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(250));
 				wait.until(ExpectedConditions.visibilityOf(waitPin));
 
 				// Tap first PIN box only

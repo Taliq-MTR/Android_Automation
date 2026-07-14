@@ -1,6 +1,7 @@
 package com.aarogya.testcases;
 
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.aarogya.base.AssertHelper;
@@ -14,11 +15,17 @@ import com.aventstack.extentreports.Status;
 
 public class WebSpecialistTestCase extends BaseTest {
 
+	@BeforeClass
+	public void setWebExecutionType() {
+		BaseTest.setExecutionType("WEB");
+		WebDriverManager.getWebDriver();
+	}
+
 	@Test(priority = 7)
 	public void logInSpecialist() {
 		// 🔐 LOGIN
 		WebLoginPage loginPage = new WebLoginPage(WebDriverManager.getWebDriver());
-		loginPage.login("specialist-1", "password");
+		loginPage.login("specialist1", "password1");
 		ExtentManager.test.log(Status.PASS, "Specialist Login SuccessFull");
 	}
 
@@ -73,7 +80,7 @@ public class WebSpecialistTestCase extends BaseTest {
 		// 🔹 Start Diagnosis
 		specialistPage.startDiagnosisAndCaptureCaseInfo();
 
-		String caseId = SpecialistPage.storedCaseId;
+		String caseId = SpecialistPage.storedRefrenceId;
 		Assert.assertNotNull(caseId, "Case ID was not captured after start diagnosis");
 
 		ExtentManager.test.log(Status.INFO, "Diagnosis Case ID: " + caseId);
@@ -132,16 +139,16 @@ public class WebSpecialistTestCase extends BaseTest {
 		SpecialistPage specialistPage = new SpecialistPage(WebDriverManager.getWebDriver());
 
 		// 🔹 Step 1: Capture completed case
-		specialistPage.findFirstCompletedUploadAndStoreCaseId();
+		specialistPage.captureReferenceIdForSecondOpinion();
 
-		String usedCaseId = SpecialistPage.storedCaseId;
+		String usedCaseId = SpecialistPage.secondOpinionRefrenceId;
 
 		ExtentManager.test.log(Status.INFO, "Case ID picked for Specialist: " + usedCaseId);
 
 		AssertHelper.assertTrue(usedCaseId != null, "No completed case found to process");
 
 		// 🔹 Step 2: Search case
-		specialistPage.searchCaseId();
+		specialistPage.searchSecondOpinionReferenceId();
 
 		// 🔹 Step 3: Click View
 		specialistPage.clickView();

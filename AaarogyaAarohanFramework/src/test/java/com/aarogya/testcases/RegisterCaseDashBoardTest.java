@@ -1,5 +1,6 @@
 package com.aarogya.testcases;
 
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.aarogya.base.AssertHelper;
@@ -11,8 +12,14 @@ import com.aarogya.reports.ExtentManager;
 import com.aventstack.extentreports.Status;
 
 public class RegisterCaseDashBoardTest extends BaseTest {
+	
+	@BeforeClass
+	public void setAndroidExecutionType() {
+	    BaseTest.setExecutionType("ANDROID");
+	    DriverManager.getDriver();
+	}
 
-	@Test(priority = 7) //, dependsOnMethods = "verifyWebLogout"
+	@Test(priority = 16) //, dependsOnMethods = "verifyWebLogout"
 	public void verifyDashboardCountUpdatesAfterRegisteringCase() throws Exception {
 
 		RegisterCaseDashBoardPage dash = new RegisterCaseDashBoardPage(DriverManager.getDriver());

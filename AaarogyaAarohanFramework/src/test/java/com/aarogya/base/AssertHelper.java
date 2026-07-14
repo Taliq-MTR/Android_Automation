@@ -1,43 +1,101 @@
 package com.aarogya.base;
 
-import org.testng.asserts.SoftAssert;
 import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 public class AssertHelper {
 
-	private static SoftAssert softAssert = new SoftAssert();
+    private static ThreadLocal<SoftAssert> softAssert =
+            ThreadLocal.withInitial(SoftAssert::new);
 
-	// ---------- Soft Assertion (Non-Blocking) ----------
-	public static void softAssertTrue(boolean condition, String successMsg, String failureMsg) {
-		if (condition) {
-			System.out.println("✔ " + successMsg);
-		} else {
-			System.out.println("❌ " + failureMsg);
-		}
-		softAssert.assertTrue(condition, failureMsg);
-	}
+    // ---------- Soft Assertion ----------
 
-	public static void softAssertEquals(String actual, String expected, String failureMsg) {
-		softAssert.assertEquals(actual, expected, failureMsg);
-	}
+    public static void softAssertTrue(
+            boolean condition,
+            String successMsg,
+            String failureMsg) {
 
-	public static void assertEquals(int actual, int expected, String message) {
-		if (actual != expected) {
-			throw new AssertionError(message + " | Expected: " + expected + " but Found: " + actual);
-		}
-	}
+        if (condition) {
+            System.out.println("✔ " + successMsg);
+        } else {
+            System.out.println("❌ " + failureMsg);
+        }
 
-	// ---------- Hard Assertion (Stops test execution) ----------
-	public static void assertTrue(boolean condition, String failureMessage) {
-		Assert.assertTrue(condition, failureMessage);
-	}
+        softAssert.get().assertTrue(condition, failureMsg);
+    }
 
-	public static void assertEquals(String actual, String expected, String failureMessage) {
-		Assert.assertEquals(actual, expected, failureMessage);
-	}
+    public static void softAssertEquals(
+            String actual,
+            String expected,
+            String failureMsg) {
 
-	// ---------- Call at the end of the test ----------
-	public static void assertAll() {
-		softAssert.assertAll();
-	}
+        softAssert.get().assertEquals(
+                actual,
+                expected,
+                failureMsg);
+    }
+
+    public static void softAssertEquals(
+            boolean actual,
+            boolean expected,
+            String failureMsg) {
+
+        softAssert.get().assertEquals(
+                actual,
+                expected,
+                failureMsg);
+    }
+
+    // ---------- Hard Assertions ----------
+
+    public static void assertTrue(
+            boolean condition,
+            String failureMessage) {
+
+        Assert.assertTrue(condition, failureMessage);
+    }
+
+    public static void assertEquals(
+            String actual,
+            String expected,
+            String failureMessage) {
+
+        Assert.assertEquals(
+                actual,
+                expected,
+                failureMessage);
+    }
+
+    public static void assertEquals(
+            int actual,
+            int expected,
+            String message) {
+
+        Assert.assertEquals(
+                actual,
+                expected,
+                message);
+    }
+
+    // ---------- Assert All ----------
+
+    public static void assertAll() {
+
+        try {
+
+            softAssert.get().assertAll();
+
+        } finally {
+
+            // IMPORTANT
+            softAssert.remove();
+        }
+    }
+
+    // ---------- Reset ----------
+
+    public static void resetSoftAssert() {
+
+        softAssert.set(new SoftAssert());
+    }
 }

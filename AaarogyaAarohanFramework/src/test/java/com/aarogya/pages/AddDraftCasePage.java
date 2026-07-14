@@ -58,7 +58,7 @@ public class AddDraftCasePage {
 			wait.until(ExpectedConditions.visibilityOf(goToCases));
 			goToCases.click();
 			Thread.sleep(5000);
-			AddTestPage creatTest = new AddTestPage(driver);
+			AddNewCasePage creatTest = new AddNewCasePage(driver);
 			creatTest.clickAddTestBttn();
 			// 🔥 Capture unique generated name
 			String uniqueName = creatTest.basicInfoPage();
@@ -129,16 +129,44 @@ public class AddDraftCasePage {
 			Thread.sleep(2000);
 			draftEditBttn.click();
 			ExtentManager.test.log(Status.INFO, "Draft Edit button Clicked");
-
 			wait.until(ExpectedConditions.visibilityOf(nxtBttn));
 			nxtBttn.click();
 			ExtentManager.test.log(Status.INFO, "Next button Clicked");
 			wait.until(ExpectedConditions.visibilityOf(nxtBttn));
 			nxtBttn.click();
 			ExtentManager.test.log(Status.INFO, "Next button Clicked");
-			AddTestPage test = new AddTestPage(driver);
+			AddNewCasePage test = new AddNewCasePage(driver);
 			test.imageScreeningWithPermission();
+			test.imagePreview();
 			test.submitForm();
+			Thread.sleep(2000);
+			test.waitForPage();
+			ExtentManager.test.log(Status.PASS, "The Case Registered Through Draft Case");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			ExtentManager.test.log(Status.FAIL, "The Case not Registered Through Draft Case:" + e);
+		}
+
+	}
+	
+	public void registeredDraftCasesPH2() {
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+			wait.until(ExpectedConditions.visibilityOf(draftEditBttn));
+			Thread.sleep(2000);
+			draftEditBttn.click();
+			ExtentManager.test.log(Status.INFO, "Draft Edit button Clicked");
+			wait.until(ExpectedConditions.visibilityOf(nxtBttn));
+			nxtBttn.click();
+			ExtentManager.test.log(Status.INFO, "Next button Clicked");
+			wait.until(ExpectedConditions.visibilityOf(nxtBttn));
+			nxtBttn.click();
+			ExtentManager.test.log(Status.INFO, "Next button Clicked");
+			AddNewCasePage test = new AddNewCasePage(driver);
+			test.imageScreeningWithPermission();
+			test.imagePreview();
+			test.submitForm();
+			test.caseAIResultScreen();
 			Thread.sleep(2000);
 			test.waitForPage();
 			ExtentManager.test.log(Status.PASS, "The Case Registered Through Draft Case");

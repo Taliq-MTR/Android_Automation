@@ -1,7 +1,7 @@
-
 package com.aarogya.pages;
 
 import java.time.Duration;
+import java.util.List;
 import java.util.Random;
 
 import org.openqa.selenium.By;
@@ -15,11 +15,14 @@ import com.aarogya.base.CommonMethods;
 import com.aarogya.reports.ExtentManager;
 import com.aventstack.extentreports.Status;
 
+import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 
-public class AddTestPhase2Page {
+public class AddNewCasePage {
 
 	private AndroidDriver driver;
+	public static String generatedReferenceId;
+	public static String visitedDateTime;
 
 	@FindBy(xpath = "//android.widget.TextView[@text=\"Add new case\"]")
 	private WebElement addNewCase;
@@ -204,22 +207,47 @@ public class AddTestPhase2Page {
 	@FindBy(xpath = "//android.widget.Button")
 	private WebElement okayButton;
 
-	public AddTestPhase2Page(AndroidDriver driver) {
+	@FindBy(xpath = "//android.widget.TextView[@text='Syncing data…']")
+	private WebElement syncingDataPopup;
+
+	@FindBy(xpath = "//android.widget.ImageView[@content-desc=\"Photo Preview\"]")
+	private WebElement photoPreview;
+
+	@FindBy(xpath = "//android.widget.ImageButton")
+	private WebElement closeImagePreview;
+
+	@FindBy(xpath = "//android.widget.TextView[@text=\"AI Result\"]")
+	private WebElement txtAIResult;
+
+	@FindBy(xpath = "//androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View[2]/android.widget.Button")
+	private WebElement stillReferBttn;
+
+	@FindBy(xpath = "//androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View[3]/android.widget.Button")
+	private WebElement completeBttn;
+
+	@FindBy(xpath = "(//android.widget.TextView[@text='Reference ID'])[1]")
+	private WebElement referenceIdLabel;
+
+	@FindBy(xpath = "//android.widget.TextView[@text='Visited']")
+	private WebElement visitedLabel;
+
+	public AddNewCasePage(AndroidDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
 
-	public String getAddBttnText() {
+	public boolean isAddNewCaseVisible() {
+
 		try {
-			return addNewCase.getText();
+			return clcAddnewTestBttn.isDisplayed();
 		} catch (Exception e) {
-			return null;
+			return false;
 		}
 	}
 
 	public void clickAddTestBttn() {
 		try {
-			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 			wait.until(ExpectedConditions.visibilityOf(clcAddnewTestBttn));
 			Thread.sleep(200);
 			clcAddnewTestBttn.click();
@@ -228,7 +256,7 @@ public class AddTestPhase2Page {
 					.findElements(By.id("com.android.permissioncontroller:id/permission_allow_foreground_only_button"))
 					.size() > 0) {
 				locatnPermisn.click();
-				Thread.sleep(5000);
+				Thread.sleep(7000);
 				ExtentManager.test.log(Status.INFO, "Add New Case Button Clicked");
 			}
 
@@ -266,6 +294,7 @@ public class AddTestPhase2Page {
 			CommonMethods.scrollDown();
 			Thread.sleep(800);
 			selectRandomAgeInput();
+
 			selectRandomGender();
 			CommonMethods.scrollDown();
 			Thread.sleep(500);
@@ -400,21 +429,91 @@ public class AddTestPhase2Page {
 	}
 
 	public void waitForPage() {
+
 		try {
-			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
+
+			// Dashboard section appears
 			wait.until(ExpectedConditions.visibilityOf(waitMainPage));
-			ExtentManager.test.log(Status.PASS, "Registered Case Form Added");
+
+			ExtentManager.test.log(Status.INFO, "RECENTLY SUBMITTED section visible");
+
+			// Optional wait for sync popup to disappear
+			try {
+
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(
+						By.xpath("//android.widget.TextView[contains(@text,'Syncing')]")));
+
+				ExtentManager.test.log(Status.INFO, "Sync completed");
+
+			} catch (Exception e) {
+
+				ExtentManager.test.log(Status.WARNING, "Sync still running, proceeding with validation");
+			}
+
+			ExtentManager.test.log(Status.PASS, "Dashboard loaded successfully");
+
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			ExtentManager.test.log(Status.FAIL, "Registered Case Form not Added:" + e);
+
+			ExtentManager.test.log(Status.FAIL, "Dashboard not loaded: " + e.getMessage());
+
+			throw e;
+		}
+	}
+
+	public void captureReferenceIdAndVisitedTime() {
+
+		try {
+
+			// Reference ID
+			WebElement referenceIdElement = driver
+					.findElement(AppiumBy.androidUIAutomator("new UiSelector().textMatches(\"[0-9]{8}\")"));
+
+			generatedReferenceId = referenceIdElement.getText().trim();
+
+			if ("Not Available".equalsIgnoreCase(generatedReferenceId)) {
+
+				ExtentManager.test.log(Status.FAIL, "Reference ID is showing Not Available");
+
+			} else {
+
+				ExtentManager.test.log(Status.PASS, "Generated Reference ID : " + generatedReferenceId);
+			}
+
+			// Visited Date Time
+			WebElement visitedElement = driver
+					.findElement(AppiumBy.androidUIAutomator("new UiSelector().textMatches(\".*[0-9]{4}.*(AM|PM)\")"));
+
+			visitedDateTime = visitedElement.getText().trim();
+
+			ExtentManager.test.log(Status.INFO, "Visited Date Time : " + visitedDateTime);
+
+		} catch (Exception e) {
+
+			ExtentManager.test.log(Status.FAIL,
+					"Failed to capture Reference ID / Visited Date Time : " + e.getMessage());
 		}
 	}
 
 	public String getDashboardText() {
+
 		try {
 
-			return waitMainPage.getText();
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+
+			wait.until(ExpectedConditions.visibilityOf(waitMainPage));
+
+			String text = waitMainPage.getText();
+
+			ExtentManager.test.log(Status.INFO, "Dashboard Text Found: " + text);
+
+			return text;
+
 		} catch (Exception e) {
+
+			ExtentManager.test.log(Status.FAIL, "Unable to find RECENTLY SUBMITTED section");
+
 			return null;
 		}
 	}
@@ -431,17 +530,25 @@ public class AddTestPhase2Page {
 	}
 
 	public boolean isCaseVisibleInRecentlySubmitted(String firstName) {
-		try {
-			String xpath = "//android.widget.TextView[@text='" + firstName + "']";
-			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
 
-			ExtentManager.test.log(Status.PASS, "Case visible in Recently Submitted: " + firstName);
-			Thread.sleep(5000);
+		try {
+
+			ExtentManager.test.log(Status.INFO, "Searching for case: " + firstName);
+
+			String xpath = "//android.widget.TextView[contains(@text,'" + firstName + "')]";
+
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(90));
+
+			WebElement caseElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+
+			ExtentManager.test.log(Status.PASS, "Case found in Recently Submitted: " + caseElement.getText());
+
 			return true;
 
 		} catch (Exception e) {
-			ExtentManager.test.log(Status.FAIL, "Case NOT visible in Recently Submitted: " + firstName);
+
+			ExtentManager.test.log(Status.FAIL, "Case NOT found in Recently Submitted: " + firstName);
+
 			return false;
 		}
 	}
@@ -545,6 +652,45 @@ public class AddTestPhase2Page {
 
 		} catch (Exception e) {
 			ExtentManager.test.log(Status.WARNING, "Permission handling failed: " + e.getMessage());
+		}
+	}
+
+	public void imagePreview() {
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+			wait.until(ExpectedConditions.visibilityOf(photoPreview));
+			photoPreview.click();
+			closeImagePreview.click();
+			ExtentManager.test.log(Status.PASS, "Image Preview SuccessFully");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			ExtentManager.test.log(Status.FAIL, "Image Preview Failed:" + e);
+		}
+	}
+
+	public void caseAIResultScreen() {
+
+		try {
+
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+			// Check if AI Result page is displayed
+			wait.until(ExpectedConditions.visibilityOf(txtAIResult));
+
+			ExtentManager.test.log(Status.INFO, "AI Result Page Visible Successfully");
+
+			// Randomly choose one button
+			if (new Random().nextBoolean()) {
+				stillReferBttn.click();
+				ExtentManager.test.log(Status.INFO, "'Still Refer' button clicked");
+			} else {
+				completeBttn.click();
+				ExtentManager.test.log(Status.INFO, "'Complete' button clicked");
+			}
+			ExtentManager.test.log(Status.PASS, "AI Result Page Visible and Perform Action Successfully");
+		} catch (Exception e) {
+
+			ExtentManager.test.log(Status.FAIL, "AI Result Page Visible Failed:" + e);
 		}
 	}
 

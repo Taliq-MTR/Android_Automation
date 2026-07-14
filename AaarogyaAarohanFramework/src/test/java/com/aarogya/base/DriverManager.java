@@ -70,6 +70,9 @@ public class DriverManager {
 
         return driver;
     }
+    public static AndroidDriver getCurrentDriver() {
+        return driver;
+    }
 
     public static void quitDriver() {
 

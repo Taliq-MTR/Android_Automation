@@ -1,5 +1,6 @@
 package com.aarogya.testcases;
 
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.aarogya.base.AssertHelper;
@@ -9,6 +10,13 @@ import com.aarogya.pages.LoginPage;
 
 public class LoginTestCase extends BaseTest {
 
+	
+	@BeforeClass
+	public void setAndroidExecutionType() {
+	    BaseTest.setExecutionType("ANDROID");
+	    DriverManager.getDriver();
+	}
+	
 	@Test(priority = 2)
 	public void loginTest() {
 

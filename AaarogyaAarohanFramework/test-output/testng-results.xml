@@ -1,31 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
+<testng-results ignored="0" total="4" passed="4" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-05-04T19:40:18 IST" name="Suite" finished-at="2026-05-04T19:43:07 IST" duration-ms="169152">
+  <suite started-at="2026-06-15T19:14:11 IST" name="Suite" finished-at="2026-06-15T19:19:44 IST" duration-ms="333108">
     <groups>
     </groups>
-    <test started-at="2026-05-04T19:40:18 IST" name="Aarogya Aarohan Mobile And Web App" finished-at="2026-05-04T19:43:07 IST" duration-ms="169152">
-      <class name="com.aarogya.testcases.RecommendationsTest">
-        <test-method signature="recommendationFlowTest()[pri:10, instance:com.aarogya.testcases.RecommendationsTest@1ff4931d]" started-at="2026-05-04T19:40:50 IST" name="recommendationFlowTest" finished-at="2026-05-04T19:43:07 IST" duration-ms="137316" status="PASS">
+    <test started-at="2026-06-15T19:14:11 IST" name="Aarogya Aarohan Mobile And Web App" finished-at="2026-06-15T19:19:44 IST" duration-ms="333108">
+      <class name="com.aarogya.testcases.AddNewCaseTestCase">
+        <test-method is-config="true" signature="setAndroidExecutionType()[pri:0, instance:com.aarogya.testcases.AddNewCaseTestCase@7d8995e]" started-at="2026-06-15T19:16:38 IST" name="setAndroidExecutionType" finished-at="2026-06-15T19:16:38 IST" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- recommendationFlowTest -->
-      </class> <!-- com.aarogya.testcases.RecommendationsTest -->
+        </test-method> <!-- setAndroidExecutionType -->
+        <test-method signature="AddingNewase()[pri:3, instance:com.aarogya.testcases.AddNewCaseTestCase@7d8995e]" started-at="2026-06-15T19:16:38 IST" name="AddingNewase" finished-at="2026-06-15T19:19:00 IST" duration-ms="142818" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- AddingNewase -->
+      </class> <!-- com.aarogya.testcases.AddNewCaseTestCase -->
+      <class name="com.aarogya.testcases.LogOutTestCase">
+        <test-method is-config="true" signature="setAndroidExecutionType()[pri:0, instance:com.aarogya.testcases.LogOutTestCase@130d63be]" started-at="2026-06-15T19:19:00 IST" name="setAndroidExecutionType" finished-at="2026-06-15T19:19:00 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setAndroidExecutionType -->
+        <test-method signature="logOutTest()[pri:20, instance:com.aarogya.testcases.LogOutTestCase@130d63be]" started-at="2026-06-15T19:19:00 IST" name="logOutTest" finished-at="2026-06-15T19:19:44 IST" duration-ms="43743" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- logOutTest -->
+      </class> <!-- com.aarogya.testcases.LogOutTestCase -->
       <class name="com.aarogya.testcases.LoginTestCase">
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.aarogya.testcases.LoginTestCase@752325ad]" started-at="2026-05-04T19:40:14 IST" name="setup" finished-at="2026-05-04T19:40:18 IST" duration-ms="4141" status="PASS">
+        <test-method is-config="true" signature="setAndroidExecutionType()[pri:0, instance:com.aarogya.testcases.LoginTestCase@6cf0e0ba]" started-at="2026-06-15T19:14:25 IST" name="setAndroidExecutionType" finished-at="2026-06-15T19:14:25 IST" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method signature="loginTest()[pri:2, instance:com.aarogya.testcases.LoginTestCase@752325ad]" started-at="2026-05-04T19:40:18 IST" name="loginTest" finished-at="2026-05-04T19:40:50 IST" duration-ms="31605" status="PASS">
+        </test-method> <!-- setAndroidExecutionType -->
+        <test-method signature="loginTest()[pri:2, instance:com.aarogya.testcases.LoginTestCase@6cf0e0ba]" started-at="2026-06-15T19:14:25 IST" name="loginTest" finished-at="2026-06-15T19:16:38 IST" duration-ms="132237" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- loginTest -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.aarogya.testcases.LoginTestCase@752325ad]" started-at="2026-05-04T19:43:08 IST" name="tearDown" finished-at="2026-05-04T19:43:08 IST" duration-ms="498" status="PASS">
+      </class> <!-- com.aarogya.testcases.LoginTestCase -->
+      <class name="com.aarogya.testcases.HomeTestCase">
+        <test-method is-config="true" signature="setAndroidExecutionType()[pri:0, instance:com.aarogya.testcases.HomeTestCase@2f9f7dcf]" started-at="2026-06-15T19:14:11 IST" name="setAndroidExecutionType" finished-at="2026-06-15T19:14:16 IST" duration-ms="5016" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setAndroidExecutionType -->
+        <test-method signature="selectCityTest()[pri:1, instance:com.aarogya.testcases.HomeTestCase@2f9f7dcf]" started-at="2026-06-15T19:14:16 IST" name="selectCityTest" finished-at="2026-06-15T19:14:25 IST" duration-ms="9159" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- selectCityTest -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.aarogya.testcases.HomeTestCase@2f9f7dcf]" started-at="2026-06-15T19:19:44 IST" name="tearDown" finished-at="2026-06-15T19:19:45 IST" duration-ms="556" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- com.aarogya.testcases.LoginTestCase -->
+      </class> <!-- com.aarogya.testcases.HomeTestCase -->
     </test> <!-- Aarogya Aarohan Mobile And Web App -->
   </suite> <!-- Suite -->
 </testng-results>

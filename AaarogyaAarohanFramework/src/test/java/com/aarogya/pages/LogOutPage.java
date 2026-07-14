@@ -23,7 +23,7 @@ public class LogOutPage {
 	}
 
 	// ------------------- LOCATORS -------------------
-	@FindBy(xpath = "(//android.widget.ImageView[@content-desc='Filter'])[5]")
+	@FindBy(xpath = "(//android.widget.ImageView[@content-desc=\"Filter\"])[5]")
 	private WebElement clcProfile;
 
 	@FindBy(xpath = "//android.widget.TextView[@text='Profile']")
@@ -37,10 +37,9 @@ public class LogOutPage {
 
 	@FindBy(xpath = "//android.widget.TextView[@text='Username']")
 	private WebElement usernameText;
-	
+
 	@FindBy(xpath = "//androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View[2]/android.view.View")
 	private WebElement syncPopUp;
-
 
 	public void openProfile() {
 
@@ -80,22 +79,38 @@ public class LogOutPage {
 
 	// ------------------- GETTERS FOR ASSERTIONS -------------------
 
-    // For asserting profile screen open
-    public String getProfileHeaderText() {
-        try {
-            return profileHeader.getText();
-        } catch (Exception e) {
-            return null;
-        }
-    }
+	// For asserting profile screen open
+	public String getProfileHeaderText() {
+		try {
+			return profileHeader.getText();
+		} catch (Exception e) {
+			return null;
+		}
+	}
 
-    // For asserting logout success (we’ll check "Username" text)
-    public String getLoginPageText() {
-        try {
-            return usernameText.getText();
-        } catch (Exception e) {
-            return null;
-        }
-    }
+	// For asserting logout success (we’ll check "Username" text)
+	public String getLoginPageText() {
+		try {
+			return usernameText.getText();
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	public boolean isLoginButtonVisible() {
+
+		try {
+
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+
+			wait.until(ExpectedConditions.visibilityOf(loginButton));
+
+			return true;
+
+		} catch (Exception e) {
+
+			return false;
+		}
+	}
 
 }

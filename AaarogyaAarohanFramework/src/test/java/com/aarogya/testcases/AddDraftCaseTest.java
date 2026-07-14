@@ -1,5 +1,6 @@
 package com.aarogya.testcases;
 
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.aarogya.base.AssertHelper;
@@ -8,8 +9,15 @@ import com.aarogya.base.DriverManager;
 import com.aarogya.pages.AddDraftCasePage;
 
 public class AddDraftCaseTest extends BaseTest {
+	
+	@BeforeClass
+	public void setAndroidExecutionType() {
 
-	@Test(priority = 8)
+	    BaseTest.setExecutionType("ANDROID");
+
+	    DriverManager.getDriver();
+	}
+	@Test(priority = 17)
 	public void addDraftCase() {
 		AddDraftCasePage draft = new AddDraftCasePage(DriverManager.getDriver());
 
@@ -26,7 +34,7 @@ public class AddDraftCaseTest extends BaseTest {
 		AssertHelper.assertAll();
 	}
 
-	@Test(priority = 9)
+	@Test(priority = 18)
 	public void dltingDraftCase() throws InterruptedException {
 
 		AddDraftCasePage dltCase = new AddDraftCasePage(DriverManager.getDriver());
@@ -56,7 +64,7 @@ public class AddDraftCaseTest extends BaseTest {
 		AssertHelper.assertAll();
 	}
 
-	@Test(priority = 10)
+	@Test(priority = 19)
 	public void submitDraftAndVerifyName() {
 		AddDraftCasePage draft = new AddDraftCasePage(DriverManager.getDriver());
 
@@ -74,6 +82,7 @@ public class AddDraftCaseTest extends BaseTest {
 
 		AssertHelper.softAssertEquals(isVisible ? "VISIBLE" : "NOT_VISIBLE", "VISIBLE",
 				"Recently Submitted case name not visible!");
+		
 
 		AssertHelper.assertAll();
 	}

@@ -9,42 +9,59 @@
    
    
     <classes>
-    	 <class name="com.aarogya.testcases.LoginTestCase"/>
-		<class name="com.aarogya.testcases.RecommendationsTest"/>
-        
+    	<class name="com.aarogya.testcases.HomeTestCase"/>
+        <class name="com.aarogya.testcases.LoginTestCase"/>
+        <class name="com.aarogya.testcases.AddNewCaseTestCase"/>
+    	<class name="com.aarogya.testcases.LogOutTestCase"/>
+    	
+       
     	
     	
     	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
+
     	
     	
     	
       
       <!-- 
-		
-		
+		PHASE-1
 		<class name="com.aarogya.testcases.HomeTestCase"/>
         <class name="com.aarogya.testcases.LoginTestCase"/>
-        <class name="com.aarogya.testcases.AddTestCase"/>
-		
+        <class name="com.aarogya.testcases.AddNewCaseTestCase"/>
+		<class name="com.aarogya.testcases.WebSiteCoOrdinatorTest"/>
 		<class name="com.aarogya.testcases.WebSpecialistTestCase"/>
     	<class name="com.aarogya.testcases.WebSuperSpecialistTestCase"/>
+		<class name="com.aarogya.testcases.RecommendationsTest"/>
+		<class name="com.aarogya.testcases.RegisterCaseDashBoardTest"/>
+	    <class name="com.aarogya.testcases.AddDraftCaseTest"/>
+    	<class name="com.aarogya.testcases.LogOutTestCase"/>
+    	
+    	
+    	
+    	
+    	
+    	PHASE-2
+    	
+    	<class name="com.aarogya.testcases.Phase2HomeTestCase"/>
+        <class name="com.aarogya.testcases.LoginTestCase"/>
+    	<class name="com.aarogya.testcases.Phase2AddNewCaseTest"/>
+    	<class name="com.aarogya.testcases.WebSiteCoOrdinatorTest"/>
+		<class name="com.aarogya.testcases.WebTSDTest"/>
+		<class name="com.aarogya.testcases.RecommendationsTest"/>
+		<class name="com.aarogya.testcases.Phase2RegisteredCaseFromDaashboardTest"/>
+		<class name="com.aarogya.testcases.Phase2AddDraftTestCase"/>
+    	<class name="com.aarogya.testcases.LogOutTestCase"/>
+		
+		
+		
+		
 		    	<class name="com.aarogya.testcases.HomeTestCase"/>
         <class name="com.aarogya.testcases.LoginTestCase"/>
         <class name="com.aarogya.testcases.AddTestCase"/>
     	 <class name="com.aarogya.testcases.WebLoginSample"/>
     	 
 		<class name="com.aarogya.testcases.WebLogOutTest"/>
-    	<class name="com.aarogya.testcases.LogOutTestCase"/>
+    	
 		
 		
 		

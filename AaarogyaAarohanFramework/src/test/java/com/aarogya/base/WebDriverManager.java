@@ -13,11 +13,17 @@ public class WebDriverManager {
 			webDriver = new ChromeDriver();
 			webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 			webDriver.manage().window().maximize();
-			webDriver.get("https://staging.arogyam-midas.iisc.ac.in/dashboard");
+			webDriver.get("https://stg.aarogya-aarohan.tanuh.ai/dashboard");
 		}
+		//     https://stg.aarogya-aarohan.tanuh.ai/dashboard
+	   //	   https://staging.arogyam-midas.iisc.ac.in/dashboard		
 		return webDriver;
 	}
 
+	public static WebDriver getCurrentWebDriver() {
+	    return webDriver;
+	}
+	
 	public static void quitWebDriver() {
 		if (webDriver != null) {
 			webDriver.quit();

@@ -1,6 +1,7 @@
 package com.aarogya.testcases;
 
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.aarogya.base.BaseTest;
@@ -8,7 +9,11 @@ import com.aarogya.base.WebDriverManager;
 import com.aarogya.pages.web.WebLoginPage;
 
 public class WebLoginSample extends BaseTest {
-
+	@BeforeClass
+	public void setWebExecutionType() {
+		BaseTest.setExecutionType("WEB");
+		WebDriverManager.getWebDriver();
+	}
 //    @Test(priority = 4)
     public void verifyWebLogin() {
 

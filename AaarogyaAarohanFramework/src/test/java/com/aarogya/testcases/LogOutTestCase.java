@@ -1,5 +1,6 @@
 package com.aarogya.testcases;
 
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.aarogya.base.AssertHelper;
@@ -9,7 +10,13 @@ import com.aarogya.pages.LogOutPage;
 
 public class LogOutTestCase extends BaseTest {
 
-	@Test(priority = 11) //, dependsOnMethods = "verifyWebLogout"
+	@BeforeClass
+	public void setAndroidExecutionType() {
+		BaseTest.setExecutionType("ANDROID");
+		DriverManager.getDriver();
+	}
+
+	@Test(priority = 20) // , dependsOnMethods = "verifyWebLogout"
 	public void logOutTest() {
 
 		LogOutPage logOut = new LogOutPage(DriverManager.getDriver());
@@ -20,7 +27,8 @@ public class LogOutTestCase extends BaseTest {
 
 		// STEP 2: Perform logout and validate login screen
 		logOut.loggingOut();
-		AssertHelper.softAssertEquals(logOut.getLoginPageText(), "Username", "Login page not visible after logout!");
+		AssertHelper.softAssertTrue(logOut.isLoginButtonVisible(), "Logout successful",
+				"Login button not visible after logout");
 
 		// Collect all soft assertions
 		AssertHelper.assertAll();

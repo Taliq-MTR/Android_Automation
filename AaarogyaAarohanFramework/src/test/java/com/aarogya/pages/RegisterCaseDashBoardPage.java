@@ -80,7 +80,7 @@ public class RegisterCaseDashBoardPage {
 
 	public String fillBasicInfoFromDashboard() {
 		try {
-			AddTestPage test = new AddTestPage(driver);
+			AddNewCasePage test = new AddNewCasePage(driver);
 			String uniqueName = test.basicInfoPage();
 			ExtentManager.test.log(Status.PASS, "Basic Info Completed");
 			return uniqueName;
@@ -92,7 +92,7 @@ public class RegisterCaseDashBoardPage {
 
 	public void fillHabitHistoryFromDashboard() {
 		try {
-			AddTestPage test = new AddTestPage(driver);
+			AddNewCasePage test = new AddNewCasePage(driver);
 			test.hbitHistoryPage();
 			ExtentManager.test.log(Status.PASS, "Habit History Completed");
 		} catch (Exception e) {
@@ -102,7 +102,7 @@ public class RegisterCaseDashBoardPage {
 
 	public void fillCurrentConditionFromDashboard() {
 		try {
-			AddTestPage test = new AddTestPage(driver);
+			AddNewCasePage test = new AddNewCasePage(driver);
 			test.screeningPage();
 			ExtentManager.test.log(Status.PASS, "Current Condition Completed");
 		} catch (Exception e) {
@@ -112,8 +112,9 @@ public class RegisterCaseDashBoardPage {
 
 	public void fillImageScreeningFromDashboard() {
 		try {
-			AddTestPage test = new AddTestPage(driver);
+			AddNewCasePage test = new AddNewCasePage(driver);
 			test.imageScreeningWithPermission();
+			test.imagePreview();
 			ExtentManager.test.log(Status.PASS, "Image Screening Completed");
 		} catch (Exception e) {
 			ExtentManager.test.log(Status.FAIL, "Image Screening Failed: " + e);
@@ -122,15 +123,26 @@ public class RegisterCaseDashBoardPage {
 
 	public void submitCaseFromDashboard() {
 		try {
-			AddTestPage test = new AddTestPage(driver);
+			AddNewCasePage test = new AddNewCasePage(driver);
 			test.submitForm();
-			// ✅ HARD WAIT FOR APP STATE STABILIZATION
-			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-			wait.until(ExpectedConditions.visibilityOf(totalScreenedCases));
-			Thread.sleep(12000);
-			ExtentManager.test.log(Status.INFO, "Post-submit screen stabilized");
+			
+			ExtentManager.test.log(Status.INFO, "Form Submitted Successful");
 		} catch (Exception e) {
-			ExtentManager.test.log(Status.FAIL, "Post-submit screen stabilized Failed: " + e);
+			ExtentManager.test.log(Status.FAIL, "Form submission Failed: " + e);
+		}
+	}
+	
+	public void aiResultPage() {
+		try {
+			AddNewCasePage test = new AddNewCasePage(driver);
+			test.caseAIResultScreen();
+			// ✅ HARD WAIT FOR APP STATE STABILIZATION
+						WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+						wait.until(ExpectedConditions.visibilityOf(totalScreenedCases));
+						Thread.sleep(12000);
+			ExtentManager.test.log(Status.INFO, "AI Result Page Action Completed");
+		} catch (Exception e) {
+			ExtentManager.test.log(Status.FAIL, "AI Result Page Action Failed: " + e);
 		}
 	}
 
@@ -150,23 +162,23 @@ public class RegisterCaseDashBoardPage {
 	// ------------------- TEXT GETTERS FOR ASSERTION -------------------
 
 	public String getBasicInfoText() {
-		return new AddTestPage(driver).getBasicInfoText();
+		return new AddNewCasePage(driver).getBasicInfoText();
 	}
 
 	public String getHabitHistoryText() {
-		return new AddTestPage(driver).getHabitHistoryText();
+		return new AddNewCasePage(driver).getHabitHistoryText();
 	}
 
 	public String getCurrentConditionText() {
-		return new AddTestPage(driver).getCurrentConditionText();
+		return new AddNewCasePage(driver).getCurrentConditionText();
 	}
 
 	public String getImageScreeningText() {
-		return new AddTestPage(driver).getImageScreeningText();
+		return new AddNewCasePage(driver).getImageScreeningText();
 	}
 
 	public String getDashboardText() {
-		return new AddTestPage(driver).getDashboardText();
+		return new AddNewCasePage(driver).getDashboardText();
 	}
 
 	// ------------------- UNIVERSAL COUNTER READER -------------------

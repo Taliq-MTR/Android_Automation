@@ -1,7 +1,6 @@
 package com.aarogya.pages;
 
 import java.time.Duration;
-import java.util.List;
 import java.util.Map;
 
 import org.openqa.selenium.By;
@@ -18,8 +17,6 @@ import com.aventstack.extentreports.Status;
 
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.nativekey.AndroidKey;
-import io.appium.java_client.android.nativekey.KeyEvent;
 
 public class RecommendationsPage {
 	private AndroidDriver driver;
@@ -83,6 +80,9 @@ public class RecommendationsPage {
 
 	@FindBy(xpath = "//android.widget.TextView[contains(@text,'Screened on')]")
 	private WebElement screenedTimeText;
+
+	@FindBy(xpath = "//android.view.View[@content-desc=\"Drawer Menu\"]")
+	private WebElement backBttn;
 
 	public RecommendationsPage(AndroidDriver driver) {
 		this.driver = driver;
@@ -441,6 +441,7 @@ public class RecommendationsPage {
 			Thread.sleep(1500);
 		} catch (Exception e) {
 		}
+
 	}
 
 	public boolean isCaseVisible(String caseName) {
@@ -450,20 +451,38 @@ public class RecommendationsPage {
 	public void clickCompletedTab() {
 		completedBttn.click();
 	}
-	
+
+	public void clickBackBttn() {
+
+		try {
+
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+
+			wait.until(ExpectedConditions.visibilityOf(backBttn));
+
+			wait.until(ExpectedConditions.elementToBeClickable(backBttn));
+
+			backBttn.click();
+
+			ExtentManager.test.log(Status.PASS, "Back button clicked successfully");
+
+		} catch (Exception e) {
+
+			ExtentManager.test.log(Status.WARNING, "Normal click failed. Trying Android BACK key.");
+
+			driver.navigate().back();
+		}
+	}
+
 	public boolean isCaseCompleted(String caseName) {
 
-	    try {
-	        return driver.findElements(
-	                By.xpath(
-	                        "//android.widget.TextView[@text='" + caseName + "']" +
-	                        "/following::android.widget.TextView[@text='Completed'][1]"
-	                )
-	        ).size() > 0;
+		try {
+			return driver.findElements(By.xpath("//android.widget.TextView[@text='" + caseName + "']"
+					+ "/following::android.widget.TextView[@text='Completed'][1]")).size() > 0;
 
-	    } catch (Exception e) {
-	        return false;
-	    }
+		} catch (Exception e) {
+			return false;
+		}
 	}
 
 }

@@ -1,5 +1,6 @@
 package com.aarogya.testcases;
 
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.aarogya.base.AssertHelper;
@@ -11,7 +12,13 @@ import com.aventstack.extentreports.Status;
 
 public class RecommendationsTest extends BaseTest {
 
-	@Test(priority = 10)
+	@BeforeClass
+	public void setAndroidExecutionType() {
+	    BaseTest.setExecutionType("ANDROID");
+	    DriverManager.getDriver();
+	}
+	
+	@Test(priority = 15)
 	public void recommendationFlowTest() {
 
 		RecommendationsPage page = new RecommendationsPage(DriverManager.getDriver());
@@ -60,6 +67,7 @@ public class RecommendationsTest extends BaseTest {
 		// ✅ Final Status Validation
 		AssertHelper.softAssertEquals(page.isCaseCompleted(caseName) ? "COMPLETED" : "NOT_COMPLETED", "COMPLETED",
 				"Case is not marked as COMPLETED");
+		page.clickBackBttn();
 
 		// 🔹 Final Assert
 		AssertHelper.assertAll();

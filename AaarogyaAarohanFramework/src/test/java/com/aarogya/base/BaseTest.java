@@ -1,19 +1,24 @@
 package com.aarogya.base;
 
 import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
 
 public class BaseTest {
 
-	@BeforeSuite
-	public void setup() {
-		DriverManager.getDriver();
-	}
+    @AfterSuite(alwaysRun = true)
+    public void tearDown() {
 
-	@AfterSuite
-	public void tearDown() {
-		DriverManager.quitDriver();   // Android
-	    WebDriverManager.quitWebDriver(); // Web
-	}
-	
+        DriverManager.quitDriver();       // Android
+        WebDriverManager.quitWebDriver(); // Web
+    }
+    
+    private static ThreadLocal<String> executionType = new ThreadLocal<>();
+
+    public static void setExecutionType(String type) {
+        executionType.set(type);
+    }
+
+    public static String getExecutionType() {
+        return executionType.get();
+    }
+    
 }

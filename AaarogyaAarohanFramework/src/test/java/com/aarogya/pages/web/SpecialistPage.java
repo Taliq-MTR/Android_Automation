@@ -17,7 +17,8 @@ public class SpecialistPage {
 	private WebDriver driver;
 	private WebDriverWait wait;
 
-	public static String storedCaseId;
+	public static String storedRefrenceId;
+	public static String secondOpinionRefrenceId;
 
 	public SpecialistPage(WebDriver driver) {
 		this.driver = driver;
@@ -33,7 +34,7 @@ public class SpecialistPage {
 	@FindBy(xpath = "//li[contains(@class,'flex items-center justify-between')]")
 	private List<WebElement> uploadRows;
 
-	@FindBy(xpath = "//input[@placeholder='Search Case ID']")
+	@FindBy(xpath = "//input[@placeholder='Search Reference ID']")
 	private WebElement searchBox;
 
 	@FindBy(xpath = "//button[text()='View'][1]")
@@ -85,7 +86,7 @@ public class SpecialistPage {
 	private WebElement startDiagnosis;
 
 	@FindBy(xpath = "//p[contains(@class,'truncate') and contains(@class,'font-semibold')]")
-	private WebElement caseIdValue;
+	private WebElement RefrenceIdValue;
 
 	@FindBy(xpath = "//p[text()='Missing images']")
 	private WebElement missingImageTag;
@@ -105,6 +106,9 @@ public class SpecialistPage {
 	@FindBy(xpath = "//div[text()='Previous']")
 	private WebElement previousButton;
 
+//	@FindBy(xpath = "(//div[contains(@class,'cursor-pointer')])[4]")
+//	private WebElement clearSearchButton;
+
 	// ================= TASK SUMMARY =================
 
 	@FindBy(xpath = "//div[text()='Completed diagnosis']/following-sibling::div")
@@ -119,17 +123,17 @@ public class SpecialistPage {
 		try {
 			wait.until(ExpectedConditions.elementToBeClickable(startDiagnosis)).click();
 
-			wait.until(ExpectedConditions.visibilityOf(caseIdValue));
+			wait.until(ExpectedConditions.visibilityOf(RefrenceIdValue));
 
-			storedCaseId = caseIdValue.getText().trim();
+			storedRefrenceId = RefrenceIdValue.getText().trim();
 
-			ExtentManager.test.log(Status.PASS, "Diagnosis started for Case ID: " + storedCaseId);
+			ExtentManager.test.log(Status.PASS, "Diagnosis started for Refrence ID: " + storedRefrenceId);
 
 			// 🔹 Safe optional info
 			logMissingImageInfoIfPresent();
 
 		} catch (Exception e) {
-			ExtentManager.test.log(Status.FAIL, "Start Diagnosis or Case ID capture failed: " + e);
+			ExtentManager.test.log(Status.FAIL, "Start Diagnosis or Refrence ID capture failed: " + e);
 		}
 	}
 
@@ -139,9 +143,11 @@ public class SpecialistPage {
 			List<WebElement> missingImages = driver.findElements(By.xpath("//p[text()='Missing images']"));
 
 			if (!missingImages.isEmpty()) {
-				ExtentManager.test.log(Status.INFO, "Missing Images tag is displayed for Case ID: " + storedCaseId);
+				ExtentManager.test.log(Status.INFO,
+						"Missing Images tag is displayed for Refrence ID: " + storedRefrenceId);
 			} else {
-				ExtentManager.test.log(Status.INFO, "No Missing Images tag displayed for Case ID: " + storedCaseId);
+				ExtentManager.test.log(Status.INFO,
+						"No Missing Images tag displayed for Refrence ID: " + storedRefrenceId);
 			}
 
 		} catch (Exception e) {
@@ -150,7 +156,7 @@ public class SpecialistPage {
 	}
 
 	// 🔥 NEW METHOD FOR UPLOAD STATUS TABLE
-	public void findFirstCompletedUploadAndStoreCaseId() {
+	public void findFirstCompletedUploadAndStoreRefrenceId() {
 		try {
 			for (WebElement row : uploadRows) {
 
@@ -158,9 +164,10 @@ public class SpecialistPage {
 
 				if (status.equalsIgnoreCase("Completed")) {
 
-					storedCaseId = row.findElement(By.xpath(".//span[2]")).getText().trim();
+					storedRefrenceId = row.findElement(By.xpath(".//span[2]")).getText().trim();
 
-					ExtentManager.test.log(Status.PASS, "Upload Status Completed. Case ID Stored: " + storedCaseId);
+					ExtentManager.test.log(Status.PASS,
+							"Upload Status Completed. Refrence ID Stored: " + storedRefrenceId);
 
 					return;
 				}
@@ -173,15 +180,15 @@ public class SpecialistPage {
 		}
 	}
 
-	public void searchCaseId() {
+	public void searchRefrenceId() {
 		try {
 			wait.until(ExpectedConditions.visibilityOf(searchBox)).clear();
-			searchBox.sendKeys(storedCaseId);
+			searchBox.sendKeys(storedRefrenceId);
 			Thread.sleep(2000);
-			ExtentManager.test.log(Status.PASS, "Case ID searched: " + storedCaseId);
+			ExtentManager.test.log(Status.PASS, "Refrence ID searched: " + storedRefrenceId);
 
 		} catch (Exception e) {
-			ExtentManager.test.log(Status.FAIL, "Search Case ID Failed: " + e);
+			ExtentManager.test.log(Status.FAIL, "Search Refrence ID Failed: " + e);
 		}
 	}
 
@@ -225,6 +232,58 @@ public class SpecialistPage {
 		selectRandomFromDropdown(oralCavitySiteDropdown, "Oral Cavity Site");
 	}
 
+	public void captureReferenceIdForSecondOpinion() {
+
+		try {
+
+			// Clear old search
+			wait.until(ExpectedConditions.visibilityOf(searchBox));
+
+			searchBox.clear();
+
+			Thread.sleep(1000);
+
+			if (driver.findElements(By.xpath("//div[contains(@class,'cursor-pointer')]")).size() > 0) {
+
+				driver.findElement(By.xpath("//div[contains(@class,'cursor-pointer')]")).click();
+
+				Thread.sleep(2000);
+			}
+
+			// First row reference id
+			WebElement firstReferenceId = wait.until(
+					ExpectedConditions.visibilityOfElementLocated(By.xpath("(//ul/li[position()>1])[1]/span[2]")));
+
+			secondOpinionRefrenceId = firstReferenceId.getText().trim();
+
+			ExtentManager.test.log(Status.PASS, "Second Opinion Reference ID Stored: " + secondOpinionRefrenceId);
+
+		} catch (Exception e) {
+
+			ExtentManager.test.log(Status.FAIL, "Failed to capture Second Opinion Reference ID: " + e);
+		}
+	}
+
+	public void searchSecondOpinionReferenceId() {
+
+		try {
+
+			wait.until(ExpectedConditions.visibilityOf(searchBox));
+
+			searchBox.clear();
+
+			searchBox.sendKeys(secondOpinionRefrenceId);
+
+			Thread.sleep(2000);
+
+			ExtentManager.test.log(Status.PASS, "Second Opinion Reference ID searched: " + secondOpinionRefrenceId);
+
+		} catch (Exception e) {
+
+			ExtentManager.test.log(Status.FAIL, "Second Opinion search failed: " + e);
+		}
+	}
+
 	// ================= RANDOM CHECKBOX =================
 
 	public void selectRandomRecommendation() {
@@ -256,7 +315,7 @@ public class SpecialistPage {
 	public void addNotes(String notes) {
 		try {
 			wait.until(ExpectedConditions.visibilityOf(notesField));
-			
+
 			// 🔥 Scroll to notes
 			scrollToElement(notesField);
 			Thread.sleep(900);

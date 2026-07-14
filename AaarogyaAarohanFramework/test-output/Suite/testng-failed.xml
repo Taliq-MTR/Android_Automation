@@ -6,13 +6,13 @@
   </listeners>
   <test thread-count="5" name="Aarogya Aarohan Mobile And Web App(failed)">
     <classes>
-      <class name="com.aarogya.testcases.RecommendationsTest">
+      <class name="com.aarogya.testcases.LogOutTestCase">
         <methods>
+          <include name="setAndroidExecutionType"/>
           <include name="tearDown"/>
-          <include name="setup"/>
-          <include name="recommendationFlowTest"/>
+          <include name="logOutTest"/>
         </methods>
-      </class> <!-- com.aarogya.testcases.RecommendationsTest -->
+      </class> <!-- com.aarogya.testcases.LogOutTestCase -->
     </classes>
   </test> <!-- Aarogya Aarohan Mobile And Web App(failed) -->
 </suite> <!-- Failed suite [Suite] -->
