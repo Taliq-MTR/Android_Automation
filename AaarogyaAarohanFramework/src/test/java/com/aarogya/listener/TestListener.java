@@ -67,7 +67,7 @@ public class TestListener extends ExtentManager implements ITestListener {
 				ExtentManager.test.log(Status.INFO, "Capturing WEB Screenshot");
 
 			}
-			// MOBILE TESTS
+			// MOBILE TEST
 			else {
 
 				activeDriver = DriverManager.getCurrentDriver();
